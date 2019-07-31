@@ -1,0 +1,30 @@
+---
+# defaults file for roles/ae-dir
+
+# Some paths for tools
+document_root: "/opt/ae-dir/htdocs"
+
+# base names with extension of web pages installed to DocumentRoot
+htdocs_templates:
+  - ae-dir
+  - aehostd
+  - apps
+  - bcp
+  - cli
+  - demo
+  - docs
+  - faq
+  - fun
+  - install
+  - oath
+  - pwd
+  - python
+  - todo
+  - user
+  - web2ldap
+
+# relative filename of Jinja2 base layout template for all web pages
+htdocs_layout: "layout.html.j2"
+
+# list of HTML snippets to be put as news on the entry web page
+news: []

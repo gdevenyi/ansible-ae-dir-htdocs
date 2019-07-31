@@ -1,0 +1,33 @@
+---
+# Tasks on providers after AE-DIR tools installation
+
+- name: "Create directory structure {{ document_root }}"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
+  with_items:
+    - "{{ document_root }}"
+    - "{{ document_root }}/reporting"
+
+- name: "copy AE-DIR htdocs/ to {{ document_root }}/"
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: "{{ document_root }}/"
+    follow: no
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+    directory_mode: u=rwx,g=rx,o=rx
+
+- name: "generate AE-DIR htdocs/ in {{ document_root }}/ based on {{ htdocs_layout }}"
+  template:
+    src: "{{ item }}.html.j2"
+    dest: "{{ document_root }}/{{ item }}.html"
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+    directory_mode: u=rwx,g=rx,o=rx
+  with_items: "{{ htdocs_templates }}"
