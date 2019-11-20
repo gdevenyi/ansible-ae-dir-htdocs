@@ -27,9 +27,8 @@
 <p>
   Support for running on Python 3.6+ is planned to be available by end of 2019.
   At this time running the latest ansible installation on Python 2.7 will be no longer supported.
-  Also running on Python 3.0&hellip;3.5 will not be supported.
-  So you will have to upgrade your platforms first to install latest &AElig;-DIR.
-  More details to be announced later.
+  Also running on Python 3.0&hellip;3.5 will not be supported
+  (see also <a href="install.html#prereq">installation prerequisites</a>).
 </p>
 <p>Done:</p>
 <ul>
@@ -52,6 +51,55 @@
 <ul>
   <li>
     Testing, testing, testing, &hellip;!
+  </li>
+</ul>
+
+<h1 id="monitoring">Monitoring</h1>
+<ul>
+  <li>
+    Implement Prometheus exporter for slapd.
+  </li>
+  <li>
+    Implement Prometheus exporter in web2ldap.
+  </li>
+  <li>
+    Implement grafana dash-boards.
+  </li>
+</ul>
+
+<h1 id="devops">DevOps tooling</h1>
+<ul>
+  <li>
+    Scripts for local <em>slapd-ldap</em> instance used as admin proxy for
+    bulk operations from local tools.
+  </li>
+</ul>
+
+<h2 id="ansible">ansible</h2>
+<ul>
+  <li>
+    Automated authentication configuration (add entry, set <var>userPassword</var>) for
+    <a href="docs.html#schema-oc-aeHost">aeHost</a> and
+    <a href="docs.html#schema-oc-aeService">aeService</a> with an
+    <a href="https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html#developing-modules-general">ansible module</a>.
+  </li>
+  <li>
+    <a href="https://docs.ansible.com/ansible/developing_inventory.html">
+    Dynamic inventory</a> plugin for accessing attributes in
+    &AElig;-DIR entries
+  </li>
+</ul>
+
+<h1 id="ui">User Interface</h1>
+<ul>
+  <li>
+    specific web application for administrative use-cases
+  </li>
+  <li>
+    Simple reporting use-cases (expired objects etc.).
+  </li>
+  <li>
+    Graph reporting of data structures in a zone.
   </li>
 </ul>
 
@@ -114,29 +162,6 @@
   </li>
 </ul>
 
-<h1 id="devops">DevOps tooling</h1>
-<ul>
-  <li>
-    Scripts for local <em>slapd-ldap</em> instance used as admin proxy for
-    bulk operations from local tools.
-  </li>
-</ul>
-
-<h2 id="ansible">ansible</h2>
-<ul>
-  <li>
-    Automated authentication configuration (add entry, set <var>userPassword</var>) for
-    <a href="docs.html#schema-oc-aeHost">aeHost</a> and
-    <a href="docs.html#schema-oc-aeService">aeService</a> with an
-    <a href="https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html#developing-modules-general">ansible module</a>.
-  </li>
-  <li>
-    <a href="https://docs.ansible.com/ansible/developing_inventory.html">
-    Dynamic inventory</a> plugin for accessing attributes in
-    &AElig;-DIR entries
-  </li>
-</ul>
-
 <h1 id="logging">Logging</h1>
 <ul>
   <li>
@@ -151,19 +176,6 @@
     Add
     <a href="https://github.com/blue-yonder/cee_syslog_handler">cee_syslog_handler</a>
     in file <em>ae-logging.conf</em>
-  </li>
-</ul>
-
-<h1 id="monitoring">Monitoring</h1>
-<ul>
-  <li>
-    Implement Prometheus exporter for slapd.
-  </li>
-  <li>
-    Implement Prometheus exporter in web2ldap.
-  </li>
-  <li>
-    Implement grafana dash-boards.
   </li>
 </ul>
 
@@ -233,19 +245,6 @@
     <a href="http://jpmens.net/2015/11/03/powerdns-with-the-remote-back-end-and-dnssec/">
     use remote backend (preferrably with DNSSEC)</a> via
     <a href="https://github.com/cmouse/pdns-remotebackend-python">pdns-remotebackend-python</a>
-  </li>
-</ul>
-
-<h1 id="ui">User Interface</h1>
-<ul>
-  <li>
-    specific web application for administrative use-cases
-  </li>
-  <li>
-    Simple reporting use-cases (expired objects etc.).
-  </li>
-  <li>
-    Graph reporting of data structures in a zone.
   </li>
 </ul>
 
