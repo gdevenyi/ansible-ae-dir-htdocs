@@ -110,7 +110,7 @@
     replica's <var>aeService</var> entry:
   </dt>
   <dd>
-    <pre>LDAPRC=/opt/ae-dir/etc/ldap.conf ldapwhoami -Y EXTERNAL -H ldaps://ae-dir-provider.example.com</pre>
+    <code>LDAPRC=/opt/ae-dir/etc/ldap.conf ldapwhoami -Y EXTERNAL -H ldaps://ae-dir-provider.example.com</code>
   </dd>
 
 </dl>
@@ -176,7 +176,7 @@
 <p>
   Example usage setting password for user account:
 </p>
-<pre class="cli-ae-passwd-example">
+<pre id="ae-passwd-example" class="cli">
 root@ae-dir-deb-p1:~# /opt/ae-dir/bin/ae-dir-passwd bart
 new password for uid=bart,cn=ae,{{ aedir_suffix }}:
 repeat password:
@@ -192,7 +192,7 @@ repeat password:
 <p>
   Example usage:
 </p>
-<pre class="cli-ae-add-zone-example">
+<pre id="ae-add-zone-example" class="cli">
 root@ae-dir-deb-p1:~# /opt/ae-dir/bin/ae-dir-addzone test42 IAM-42 "the definite answer"
 Added cn=test42,{{ aedir_suffix }}
 Added cn=test42-init,cn=test42,{{ aedir_suffix }}

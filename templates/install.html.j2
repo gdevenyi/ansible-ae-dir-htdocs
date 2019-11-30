@@ -92,9 +92,9 @@
       </li>
     </ul>
     Simple approach:
-    <pre>
-      # virtualenv-2.7 /opt/ansible
-      # /opt/ansible/bin/pip2 install --upgrade ansible Jinja2==2.8.1 dnspython paramiko
+    <pre class="cli">
+# virtualenv-2.7 /opt/ansible
+# /opt/ansible/bin/pip2 install --upgrade ansible Jinja2==2.8.1 dnspython paramiko
     </pre>
   </li>
   <li>
@@ -117,7 +117,7 @@
   <li>
     Check whether you can access the hosts with
     <a href="https://docs.ansible.com/ansible/setup_module.html">ansible setup</a>:
-    <pre>/opt/ansible/bin/ansible all -i 'hostname.example.com,' -m setup</pre>
+    <pre class="cli">/opt/ansible/bin/ansible all -i 'hostname.example.com,' -m setup</pre>
     The trailing comma after the FQDN is needed when using a hostname!
   </li>
   <li>
@@ -141,7 +141,7 @@
 <ol>
   <li>
     Get the ansible playbooks and roles:
-    <pre>git clone --recurse-submodules https://gitlab.com/ae-dir/ansible-example-site myenv</pre>
+    <pre class="cli">git clone --recurse-submodules https://gitlab.com/ae-dir/ansible-example-site myenv</pre>
   </li>
   <li>
     Edit ansible inventory file <em>myenv/hosts</em> to match your
@@ -156,7 +156,7 @@
   <li>
     Invoke ansible play in sub-directory <code>ansible/</code>
     (here using command <code>su</code>):
-    <pre>/opt/ansible/bin/ansible-playbook ae-dir-server.yml -i myenv/hosts --become -K --become-method=su --extra-vars='{"aedir_init":True, "openldap_keygen":True}'</pre>
+    <pre class="cli">/opt/ansible/bin/ansible-playbook ae-dir-server.yml -i myenv/hosts --become -K --become-method=su --extra-vars='{"aedir_init":True, "openldap_keygen":True}'</pre>
     <ul>
       <li>
         At first run this will generate TLS server key and signed CSR file
@@ -182,24 +182,24 @@
         <ul>
           <li>
             On SUSE / openSUSE:
-            <pre>ldapmodify -f /opt/ae-dir/etc/ae-dir-base.ldif</pre>
+            <pre class="cli">ldapmodify -f /opt/ae-dir/etc/ae-dir-base.ldif</pre>
           </li>
           <li>
             On Debian and CentOS:
-            <pre>/usr/local/openldap/bin/ldapmodify -f /opt/ae-dir/etc/ae-dir-base.ldif</pre>
+            <pre class="cli">/usr/local/openldap/bin/ldapmodify -f /opt/ae-dir/etc/ae-dir-base.ldif</pre>
           </li>
         </ul>
       </li>
       <li>
         Set the user password of an initial Æ admin (here <em>msin</em>):
-        <pre>/opt/ae-dir/bin/ae-dir-passwd msin</pre>
+        <pre class="cli">/opt/ae-dir/bin/ae-dir-passwd msin</pre>
       </li>
     </ol>
   </li>
   <li>
     Check the systems' health by invoking as <em>root</em> the monitoring
     script on all &AElig;-DIR servers. By default it is installed to:
-    <pre>/opt/ae-dir/sbin/slapd_checkmk.sh</pre>
+    <pre class="cli">/opt/ae-dir/sbin/slapd_checkmk.sh</pre>
 </ol>
 
 <h2 id="linux-login">NSS/PAM self-integration</h2>
