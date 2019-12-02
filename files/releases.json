@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.9.4",
+         "state": "testing",
+         "scope": "minor feature",
+         "changes": "Monitoring improvements, minor improvements to ansible roles",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2019-12-02T00:00:00+00:00"
+      },
+      {
          "version": "0.9.3",
          "state": "testing",
          "scope": "minor fixes",
