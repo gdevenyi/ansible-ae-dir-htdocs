@@ -23,8 +23,10 @@
       Why yet another LDAP-based user management system?
     </p>
     <p class="faq_a">
-      Yes, there are various other user management systems based on LDAP.<br>
-      But they do not provide some specific features like &AElig;-DIR does:
+      <p>
+        Yes, there are various other user management systems based on LDAP.<br>
+        But they do not provide some specific features like &AElig;-DIR does:
+      </p>
       <ul>
         <li>
           Provide data only to systems/services which need it to meet
@@ -146,9 +148,11 @@
       Can I use another search base than <em>ou=ae-dir</em>?
     </p>
     <p class="faq_a">
-      Yes. You can set ansible variable <var>aedir_suffix</var> which is used
-      in all ansible tasks and Jinja2 templates. But the characteristic
-      attribute is limited to a set of common RDN attributes:
+      <p>
+        Yes. You can set ansible variable <var>aedir_suffix</var> which is used
+        in all ansible tasks and Jinja2 templates. But the characteristic
+        attribute is limited to a set of common RDN attributes:
+      </p>
       <ul>
         <li>cn</li>
         <li>dc</li>
@@ -163,8 +167,10 @@
       Can I migrate my current user management to &AElig;-DIR?
     </p>
     <p class="faq_a">
-      This very much depends on your current deployment.
-      Things to consider before migration:
+      <p>
+        This very much depends on your current deployment.
+        Things to consider before migration:
+      </p>
       <ul>
         <li>Passwords (hashes)</li>
         <li>User names</li>
