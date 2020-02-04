@@ -14,6 +14,8 @@
   <li>
     <a href="#install">Installation (ansible)</a>
     <ol>
+      <li><a href="#prep-inv">Prepare ansible inventory</a></li>
+      <li><a href="#server">&AElig;-DIR servers</a></li>
       <li><a href="#linux-login">NSS/PAM self-integration</a></li>
       <li><a href="#oath-ldap">Two-factor authentication (OATH-LDAP)</a></li>
     </ol>
@@ -136,6 +138,8 @@ python3 -m venv /opt/ansible
 <p>
   Note that there is no official way to install &AElig;-DIR manually.
 </p>
+
+<h2 id="prep-inv">Prepare ansible inventory</h2>
 <ol>
   <li>
     Get the ansible playbooks and roles:
@@ -146,11 +150,29 @@ python3 -m venv /opt/ansible
     hosts/VMs/containers of your installation environment.
   </li>
   <li>
-    Read comments in file
-    <code>myenv/roles/ae-dir-server/defaults/main.yml</code> and adjust
-    <a href="https://docs.ansible.com/ansible/playbooks_variables.html">
-    ansible group and host vars</a> to match your environment.
+    Edit the files in directory <em>group_vars/</em> to match your environment.
   </li>
+</ol>
+<p>See also:</p>
+<ul>
+  <li>
+    Comments in file
+    <a href="https://gitlab.com/ae-dir/ansible-ae-dir-server/-/blob/master/defaults/main.yml">
+      myenv/roles/ae-dir-server/defaults/main.yml
+    </a>
+    describing the use of all variables you can override to adapt
+    installation to your local environment.
+  </li>
+  <li>
+    Ansible documentation about
+    <a href="https://docs.ansible.com/ansible/playbooks_variables.html">
+    group and host vars</a> to get a good understanding of how values are
+    assigned to variables.
+  </li>
+</ul>
+
+<h2 id="server">&AElig;-DIR servers</h2>
+<ol>
   <li>
     Invoke ansible play in sub-directory <code>ansible/</code>
     (here using command <code>su</code>):
@@ -172,8 +194,8 @@ python3 -m venv /opt/ansible
     </ul>
   </li>
   <li>
-    Log into one provider system become user <em>root</em> and run the
-    following commands to fully initialize your directory:
+    Log into <strong>one provider</strong> system become user <em>root</em>
+    and run the following commands to fully initialize your directory:
     <ol>
       <li>
         Add the basic &AElig;-DIR entries with OpenLDAP command-line tool:
