@@ -177,7 +177,7 @@ python3 -m venv /opt/ansible
   <li>
     Invoke ansible play in sub-directory <code>ansible/</code>
     (here using command <code>su</code>):
-    <pre class="cli">/opt/ansible/bin/ansible-playbook ae-dir-server.yml -i myenv/hosts --become -K --become-method=su --extra-vars='{"aedir_init":True, "openldap_keygen":True}'</pre>
+    <pre class="cli">/opt/ansible/bin/ansible-playbook ae-dir-server.yml -i myenv/hosts --become -K --become-method=su -e aedir_init=1 -e aedir_keygen=1</pre>
     <ul>
       <li>
         At first run this will generate TLS server key and signed CSR file
