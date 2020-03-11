@@ -237,6 +237,25 @@
   nslcd) are used for querying the <em>aehostd</em> service via its Unix
   domain socket.
 </p>
+
+<h3>Pre-built binary packages</h3>
+<p>
+  For some platforms there are ready-to-use binary packages available:
+</p>
+<ul>
+  <li>
+    <a href="https://www.ae-dir.com/repo/debian/">
+      &AElig;-DIR package repository Debian buster
+    </a>
+  </li>
+  <li>
+    <a href="https://build.opensuse.org/package/show/home:stroeder:iam/aehostd-modules">
+      openSUSE build service: Package <em>aehostd-modules</em> for openSUSE and SLE
+    </a>
+  </li>
+</ul>
+
+<h3>Compile from source</h3>
 <p>
   You can compile these modules with different compile-time parameters
   to prevent naming and package collisions with other standard OS packages.
@@ -264,23 +283,8 @@ passwd: files aedir
 group:  files aedir
 </pre>
 
-<p>OS-specific build files:</p>
+<p>OS-specific source packages:</p>
 <ul>
-  <li>
-    For <a href="https://www.debian.org">Debian buster</a>
-    there are ready-to-use packages available at
-    <a href="https://www.ae-dir.com/repo/debian/">
-      &AElig;-DIR Debian package repository
-    </a>
-  </li>
-  <li>
-    For <a href="https://www.opensuse.org">openSUSE</a> and
-    <a href="https://www.suse.com/products/server/">SLES</a>
-    there are ready-to-use packages available at
-    <a href="https://build.opensuse.org/package/show/home:stroeder:AE-DIR/aehostd-modules">
-      openSUSE build service: Package <em>aehostd-modules</em>
-    </a>
-  </li>
   <li>
     For building own Debian packages you can use files in directory<br>
     <a href="https://gitlab.com/ae-dir/client-examples/tree/master/aehostd-modules/debian">
@@ -297,8 +301,8 @@ group:  files aedir
 
 <h2 id="config">ansible</h2>
 <p>
-  Example ansible role: <code>ansible/roles/ae-dir-hostd/</code>
-  (sets ansible variable <em>nsswitch_module</em> to "aedir")
+  Automated installation/configuration can be done with
+  <a href="https://gitlab.com/ae-dir/ansible-aehostd">ansible role <em>aehostd</em></a>.
 </p>
 
 <h1 id="conf">Configuration</h1>
@@ -499,6 +503,10 @@ binddn = host=srv1.example.com,ou=ae-dir
 <h2 id="conf-pam">PAM parameters</h2>
 <p>Parameters used by the PAM handler:</p>
 <pre class="cfg">
+# Cache TTL (seconds) of PAM authc results
+# Default: -1 (disabled)
+#pam_authc_cache_ttl =
+
 # LDAP filter template used for checking authorization of a user
 # Default: None (disabled)
 #pam_authz_search =
