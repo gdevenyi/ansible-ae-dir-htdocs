@@ -29,7 +29,7 @@
       <li><a href="#general-bookmarks">Bookmarks</a></li>
     </ol>
   </li>
-  <li><a href="#connect-and-bind">Connect and bind</a></li>
+  <li><a href="#login">Login</a></li>
   <li>
     <a href="#search">Search</a>
     <ol>
@@ -247,7 +247,7 @@
   <a href="https://www.web2ldap.de/usability.html">web2ldap page</a>.
 </p>
 
-<h1 id="connect-and-bind">Connect and bind</h1>
+<h1 id="login">Login</h1>
 
 <p>Roles:</p>
 <ol>
@@ -271,29 +271,23 @@
     <a href="https://{{ aedir_main_provider_hostname }}/web2ldap">Connect to web2ldap</a>
   </li>
   <li>
-    Choose link
-    <span class="web2ldap-internal-link">Login to &AElig;-DIR</span>.
-  </li>
-  <li>
-    Enter your user name or bind-DN.
-  </li>
-  <li>
-    Enter the correct password.
+    Enter your <em>Username</em> and <em>Password</em>.
   </li>
   <li>
     Press <button class="web2ldap-submit-button">Login</button>.
   </li>
 </ol>
+<p>For experienced users:</p>
 <p>
-  Note that there are three possible forms of specifying your user's bind-DN
-  with or without the zone's name:
+  Note that there are three possible forms of specifying your user name or
+  user's bind-DN with or without the zone's name:
 </p>
 <ul>
   <li>
-    short form is 'uid=<em>username</em>,{{ aedir_suffix }}'
+    just the <em>username</em>
   </li>
   <li>
-    just the <em>username</em> is automatically expanded to short form above
+    short form is 'uid=<em>username</em>,{{ aedir_suffix }}'
   </li>
   <li>
     full DN is 'uid=<em>username</em>,cn=<em>zone</em>,{{ aedir_suffix }}' also
@@ -358,7 +352,7 @@
 <h2 id="search-display-self">Display own account and group membership</h2>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     Select link <span class="web2ldap-menu-button">ConnInfo</span>
@@ -604,7 +598,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     Select link <span class="web2ldap-menu-button">New entry</span>
@@ -684,7 +678,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     Select link <span class="web2ldap-menu-button">New entry</span>
@@ -754,7 +748,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     <a href="#search-zone">Search zone</a> in which to add the new entry.
@@ -838,7 +832,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     <a href="#search-aeUser">Search and display user entry</a>
@@ -876,7 +870,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     <a href="#search-aeUser">Search and display user entry</a>
@@ -921,7 +915,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     <a href="#search-zone">Search zone</a> in which to add the new entry.
@@ -996,7 +990,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     <a href="#search-zone">Search zone</a> in which to add the new entry.
@@ -1065,7 +1059,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     <a href="#Search_server_group">Search service group</a> and select the
@@ -1152,7 +1146,7 @@
 
 <p>Steps:</p>
 <ol>
-  <li><a href="#connect-and-bind">Connect and bind</a></li>
+  <li><a href="#login">Login</a></li>
   <li><a href="#search-zone">Search zone</a> in which to add the new entry.</li>
   <li>
     Select link <span class="web2ldap-menu-button">New entry</span>
@@ -1219,7 +1213,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     <a href="#search-zone">Search zone</a> for the new entry or
@@ -1276,7 +1270,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     <a href="#search-zone">Search zone</a> in which to add the new entry.
@@ -1336,7 +1330,7 @@
 <p>Steps:</p>
 <ol>
   <li>
-    <a href="#connect-and-bind">Connect and bind</a>
+    <a href="#login">Login</a>
   </li>
   <li>
     Select link <span class="web2ldap-menu-button">New entry</span>
