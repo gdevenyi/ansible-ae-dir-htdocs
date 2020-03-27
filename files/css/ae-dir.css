@@ -59,6 +59,11 @@ p.pagetitle,p.pagesubtitle,h1,h2,h3,h4 {
   font-weight:bold;
 }
 
+h1:target,h2:target,h3:target,h4:target {
+  padding-top: 4em;
+  margin-top: -4em;
+}
+
 h1:before {
   content: counter(h1counter) ".\0000a0";
 }
