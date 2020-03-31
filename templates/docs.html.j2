@@ -95,6 +95,18 @@
 
 <h1 id="sys-arch">System architecture</h1>
 
+<p>A two-tier replication topology is implemented for separated access:</p>
+<ul>
+  <li>
+    Administrators and their tools who maintain entries access the
+    writeable <a href="#sys-provider">&AElig;-DIR providers</a>.
+  </li>
+  <li>
+    Applications and systems using &AElig;-DIR access the
+    read-only <a href="#sys-consumer">&AElig;-DIR consumers</a>.
+  </li>
+</ul>
+
 {{ img('arch', 'arch.svg', '&AElig;-DIR overall system architecture') }}
 
 <h2 id="sys-provider">&AElig;-DIR provider</h2>
@@ -141,20 +153,37 @@
     <a href="https://www.web2ldap.de/docs.html">documentation</a>
     to find out about fine-tuning, customizing etc.
   </dd>
-  <dt id="sys-aedirpwd_web">aedirpwd_web</dt>
+  <dt id="sys-pwd-web">aedir_pproc.pwd.web</dt>
   <dd>
-    <em>aedirpwd_web</em> is a small web application for password
+    <em>aedir_pproc.pwd.web</em> is a small web application for password
     self-service (see <a href="pwd.html">user guide</a> for instructions
     how to use it).
   </dd>
-  <dt id="sys-aedirpwd_cron">aedirpwd_cron</dt>
+  <dt id="sys-oathenroll">oathenroll</dt>
   <dd>
-    <em>aedirpwd_cron</em> is a small Python script running as CRON job
-    which performs the following tasks:
+    <em>oathenroll</em> is a small web application for resetting and preparing
+    HOTP token entries
+    (see <a href="https://oath-ldap.stroeder.com/docs.html#enroll">OATH-LDAP docs</a>).
+  </dd>
+  <dt id="sys-cron">CRON jobs</dt>
+  <dd>
+    Various small Python programs are running as CRON job
+    performing the following tasks:
     <ul>
       <li>remove expired password reset attributes</li>
       <li>send welcome e-mails to new users especially with password reset instructions</li>
+      <li>send password expiry warning e-mails to users</li>
+      <li>update person name attributes in personal user accounts</li>
+      <li>deactivate personal user accounts for deactivated persons</li>
+      <li>deactivate expired entries</li>
+      <li>update user groups defined with member search parameters</li>
+      <li>custom sync jobs for retrieving person and organization data from HR</li>
     </ul>
+  </dd>
+  <dt id="sys-oath-ldap-hotp-validator">OATH-LDAP HOTP validator</dt>
+  <dd>
+    A slapd-sock listener which verifies LDAP simple bind operations
+    with user password and HOTP (two-factor authentication).
   </dd>
 </dl>
 
@@ -181,7 +210,7 @@
   the roles above.
 </p>
 <p>
-  There is currently only one component running on on each
+  The following system components are running on each
   &AElig;-DIR consumer system:
 </p>
 <dl>
@@ -190,6 +219,11 @@
     <a href="https://www.openldap.org">OpenLDAP's slapd</a> acting as role
     <a href="#role-ae-provider">&AElig; Replica</a>
     (see also <a href="#slapd-role-consumer">consumer configuration</a>)
+  </dd>
+  <dt id="sys-oath-ldap-bind-proxy">OATH-LDAP bind proxy</dt>
+  <dd>
+    A slapd-sock listener for proxying LDAP simple bind operations
+    for two-factor authentication to a writeable provider.
   </dd>
 </dl>
 
