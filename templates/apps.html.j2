@@ -191,13 +191,20 @@
 
 <h1 id="pam-nss">PAM/NSS services</h1>
 
-<h2 id="pam-nss-aehostd">aehostd -- Custom NSS/PAM demon</h2>
+<h2 id="pam-nss-aehostd">aehostd -- Custom NSS/PAM demon for &AElig;-DIR</h2>
 <p>
-  While you can integrate your Linux systems with any NSS/PAM service demon
-  it is highly recommended to use <a href="aehostd.html">aehostd</a>
-  which gives better search performance and has features specifically
-  useful when using &AElig;-DIR.
+  <a href="aehostd.html">aehostd</a> is the preferred solution to
+  integrate Linux and other POSIX systems. It gives better search
+  performance and has other specific features.
 </p>
+<p>
+  See also:
+</p>
+<ul>
+  <li>
+    <a href="aehostd.html#features">aehostd -- Specific features</a>
+  </li>
+</ul>
 
 <h2 id="pam-nss-sssd">sssd</h2>
 <p>
@@ -208,17 +215,17 @@
   &AElig;-DIR deliberately does not make use of them.
 </p>
 <p>
-  Two example configuration files for simple bind and SASL/EXTERNAL bind
-  with TLS client certs:
-  <a href="https://gitlab.com/ae-dir/client-examples/tree/master/sssd">client-examples/sssd</a>
-</p>
-<p>
   See also:
 </p>
 <ul>
   <li>
     <a href="https://jhrozek.wordpress.com/2015/03/11/anatomy-of-sssd-user-lookup/">
     Blog article: Anatomy of sssd user lookup</a>
+  </li>
+  <li>
+    Two example configuration files for simple bind and SASL/EXTERNAL bind
+    with TLS client certs:
+    <a href="https://gitlab.com/ae-dir/client-examples/tree/master/sssd">client-examples/sssd</a>
   </li>
 </ul>
 
