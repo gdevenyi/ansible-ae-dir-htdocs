@@ -7,6 +7,22 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.11.4",
+         "state": "stable",
+         "scope": "minor feature",
+         "changes": "OATH-LDAP bind listeners are now using config files, added Feature-Policy header to Apache and web2ldap.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-04-11T14:00:00+00:00"
+      },
+      {
+         "version": "0.11.3",
+         "state": "stable",
+         "scope": "minor feature",
+         "changes": "Pulls in many software updates besides many other small improvements and fixes.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-04-11T14:00:00+00:00"
+      },
+      {
          "version": "0.11.0",
          "state": "stable",
          "scope": "minor feature",
