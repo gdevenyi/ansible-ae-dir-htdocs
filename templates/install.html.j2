@@ -83,7 +83,7 @@
     <ul>
       <li>Python 3.6 or newer</li>
       <li>
-        <a href="https://docs.ansible.com/ansible/intro_installation.html">ansible 2.9+</a>
+        <a href="https://docs.ansible.com/ansible/intro_installation.html">ansible 2.9.7+</a>
       </li>
       <li>
         <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a>
@@ -144,7 +144,11 @@ python3 -m venv /opt/ansible
 <ol>
   <li>
     Get the ansible playbooks and roles:
-    <pre class="cli">git clone --recurse-submodules https://gitlab.com/ae-dir/ansible-example-site myenv</pre>
+    <pre class="cli">
+git clone https://gitlab.com/ae-dir/ansible-example-site myenv
+cd myenv
+/opt/ansible/bin/ansible-galaxy install -r requirements.yml
+</pre>
   </li>
   <li>
     Edit ansible inventory file <em>myenv/hosts</em> to match your
