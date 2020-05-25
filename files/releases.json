@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.12.3",
+         "state": "stable",
+         "scope": "stable",
+         "changes": "More systemd hardening options, slapd.conf installed after validation.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-05-25T20:00:00+00:00"
+      },
+      {
          "version": "0.12.2",
          "state": "stable",
          "scope": "stable",
