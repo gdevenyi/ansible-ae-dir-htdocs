@@ -839,7 +839,7 @@
       <ul>
         <li>oathHOTPToken</li>
         <li>oathTOTPToken</li>
-        <li><a href="#schema-oc-ldapPublicKey">ldapPublicKey</a></li>
+        <li>ldapPublicKey</li>
         <li><a href="#schema-oc-pkiUser">pkiUser</a></li>
       </ul>
     </td>
@@ -899,7 +899,7 @@
     <td>
       <ul>
         <li><a href="#schema-oc-posixAccount">posixAccount</a></li>
-        <li><a href="#schema-oc-ldapPublicKey">ldapPublicKey</a></li>
+        <li>ldapPublicKey</li>
         <li><a href="#schema-oc-pkiUser">pkiUser</a></li>
         <li>ipHost</li>
       </ul>
@@ -1018,7 +1018,7 @@
         <li><a href="#schema-oc-posixAccount">posixAccount</a></li>
         <li><a href="#schema-oc-inetLocalMailRecipient">inetLocalMailRecipient</a></li>
         <li><a href="#schema-oc-pkiUser">pkiUser</a></li>
-        <li><a href="#schema-oc-ldapPublicKey">ldapPublicKey</a></li>
+        <li><a href="#schema-oc-aeSSHAccount">aeSSHAccount</a></li>
         <li>oathHOTPUser</li>
         <li>oathTOTPUser</li>
       </ul>
@@ -1075,7 +1075,7 @@
         <li><a href="#schema-oc-posixAccount">posixAccount</a></li>
         <li><a href="#schema-oc-inetLocalMailRecipient">inetLocalMailRecipient</a></li>
         <li><a href="#schema-oc-pkiUser">pkiUser</a></li>
-        <li><a href="#schema-oc-ldapPublicKey">ldapPublicKey</a></li>
+        <li><a href="#schema-oc-aeSSHAccount">aeSSHAccount</a></li>
         <li>msPwdResetObject</li>
         <li>oathHOTPUser</li>
         <li>oathTOTPUser</li>
@@ -1973,16 +1973,19 @@
   <li>userCertificate</li>
 </ul>
 
-<h3 id="schema-oc-ldapPublicKey">ldapPublicKey</h3>
+<h3 id="schema-oc-aeSSHAccount">aeSSHAccount</h3>
 <p>
-  The auxiliary object class <var>ldapPublicKey</var> is used to store SSH public keys in
-  (see <a href="https://github.com/AndriiGrytsenko/openssh-ldap-publickey">openssh-ldap-publickey</a>).
+  The auxiliary object class <var>aeSSHAccount</var> is used to store SSH
+  public keys and SSH key options and is derived from object class
+  <var>ldapPublicKey</var> (see
+  <a href="https://github.com/AndriiGrytsenko/openssh-ldap-publickey">openssh-ldap-publickey</a>).
 </p>
 <p>
-  The following <var>ldapPublicKey</var> attribute is optionally
+  The following <var>aeSSHAccount</var> attribute can be optionally
   added to <var>aeUser</var> and <var>aeService</var> entries:
 </p>
 <ul>
+  <li>aeSSHPermissions</li>
   <li>sshPublicKey</li>
 </ul>
 
