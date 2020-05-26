@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.14.0",
+         "state": "stable",
+         "scope": "stable",
+         "changes": "New object class aeSSHAccount.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-05-26T19:00:00+00:00"
+      },
+      {
          "version": "0.12.3",
          "state": "stable",
          "scope": "stable",
