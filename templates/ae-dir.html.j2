@@ -4,13 +4,13 @@
 {% block head_pagedescription %}Authorized Entities Directory{% endblock %}
 
 {% block content %}
-{% if aedir_main_provider_hostname %}
+{% if aedir_provider_lb_hostname %}
 <p>
-  <a href="https://{{ aedir_main_provider_hostname }}/web2ldap"
+  <a href="https://{{ aedir_provider_lb_hostname }}/web2ldap"
      title="Access to administration UI (web2ldap)">Admin UI (web2ldap)</a> //
-  <a href="https://{{ aedir_main_provider_hostname }}/pwd/"
+  <a href="https://{{ aedir_provider_lb_hostname }}/pwd/"
      title="Access to &AElig;-DIR password self-service">Password self-service</a> //
-  <a href="https://{{ aedir_main_provider_hostname }}/oath/"
+  <a href="https://{{ aedir_provider_lb_hostname }}/oath/"
      title="Access to OATH-LDAP Token Enrollment Service">OATH enrollment</a>
 </p>
 {% endif %}
