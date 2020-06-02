@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.14.2",
+         "state": "stable",
+         "scope": "stable",
+         "changes": "Small schema change in schema, new ansible variable for load-balancer hostname.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-06-02T16:00:00+00:00"
+      },
+      {
          "version": "0.14.1",
          "state": "stable",
          "scope": "stable",
