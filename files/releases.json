@@ -7,12 +7,12 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
-         "version": "0.14.3",
+         "version": "0.14.4",
          "state": "stable",
          "scope": "stable",
          "changes": "Round-robin invocation of CRON jobs on all providers.",
          "download": "https://ae-dir.com/install.html",
-         "published": "2020-06-03T09:30:00+00:00"
+         "published": "2020-06-03T15:00:00+00:00"
       },
       {
          "version": "0.14.2",
