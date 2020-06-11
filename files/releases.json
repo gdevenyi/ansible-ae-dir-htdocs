@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.15.0",
+         "state": "stable",
+         "scope": "stable",
+         "changes": "Automation of aeHost and aeService for replicas added after initial load, TLS keygen regression fix.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-06-11T21:00:00+00:00"
+      },
+      {
          "version": "0.14.7",
          "state": "stable",
          "scope": "stable",
