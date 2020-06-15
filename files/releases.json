@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.15.4",
+         "state": "stable",
+         "scope": "stable",
+         "changes": "Improved automation of aeHost and aeService entries.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-06-16T00:00:00+00:00"
+      },
+      {
          "version": "0.15.2",
          "state": "stable",
          "scope": "stable",
