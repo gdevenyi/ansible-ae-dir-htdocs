@@ -181,7 +181,7 @@ cd myenv
   <li>
     Invoke ansible play in sub-directory <code>ansible/</code>
     (here using command <code>su</code>):
-    <pre class="cli">/opt/ansible/bin/ansible-playbook ae-dir-server.yml -i myenv/hosts --become -K --become-method=su -e aedir_init=1 -e aedir_keygen=1</pre>
+    <pre class="cli">/opt/ansible/bin/ansible-playbook aedir_server.yml -i myenv/hosts --become -K --become-method=su -e aedir_init=1 -e aedir_keygen=1</pre>
     <ul>
       <li>
         At first run this will generate TLS server key and signed CSR file
@@ -212,14 +212,14 @@ cd myenv
     <pre class="cli">/opt/ae-dir/sbin/slapd_checkmk.sh</pre>
 </ol>
 
-<h2 id="linux-login">NSS/PAM self-integration</h2>
+<h2 id="linux-login">NSS/PAM integration of other hosts</h2>
 <p>
-  For PAM/NSS client self-integration invoke this ansible play to install
-  and configure <a href="aehostd.html">aehostd</a>
+  For PAM/NSS client integration of arbitrary hosts invoke this ansible
+  play to install and configure <a href="aehostd.html">aehostd</a>
   (here using command <code>su</code>):
 </p>
 <pre class="cli">
-/opt/ansible/bin/ansible-playbook aehostd.yml -i myenv/hosts --become -K --become-method=su -l ae-dir-servers
+/opt/ansible/bin/ansible-playbook aehostd.yml -i myenv/hosts --become -K --become-method=su -l some-other-host.example.com
 </pre>
 
 <h2 id="oath-ldap">Two-factor authentication (OATH-LDAP)</h2>
