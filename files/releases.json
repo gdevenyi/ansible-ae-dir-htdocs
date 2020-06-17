@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.15.5",
+         "state": "stable",
+         "scope": "stable",
+         "changes": "Improved docs, brushed up playbooks and example site directory.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-06-17T16:00:00+00:00"
+      },
+      {
          "version": "0.15.4",
          "state": "stable",
          "scope": "stable",
