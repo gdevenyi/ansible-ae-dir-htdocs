@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.15.7",
+         "state": "stable",
+         "scope": "stable",
+         "changes": "aehostd UID/GID is mapped to replica's aeHost entry.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-06-20T18:00:00+00:00"
+      },
+      {
          "version": "0.15.6",
          "state": "stable",
          "scope": "stable",
