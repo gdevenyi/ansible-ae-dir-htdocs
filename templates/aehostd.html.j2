@@ -472,8 +472,15 @@ binddn = host=srv1.example.com,ou=ae-dir
 # Default: AE-DIR user {username}
 #gecos_tmpl = AE-DIR user {username}
 
-# Template string for deriving home directory path name from e.g. user name
-# Default: None (disabled)
+# Template string to use to derive homeDirectory from username and/or POSIX-IDs
+# instead of querying it via LDAP.
+# Field names which can be used in template string:
+# - username,
+# - uid (for numeric POSIX-UID)
+# - gid (for numeric POSIX-GID)
+# Examples:
+# aehostd_homedir_tmpl: "/home/{user}"
+# aehostd_homedir_tmpl: "/run/user/{uid}"
 #homedir_tmpl =
 
 # Login shell to be used if attribute loginShell is not available
