@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.15.9",
+         "state": "stable",
+         "scope": "stable",
+         "changes": "Fixed CentOS 7/8 compability issues.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-06-20T18:00:00+00:00"
+      },
+      {
          "version": "0.15.7",
          "state": "stable",
          "scope": "stable",
