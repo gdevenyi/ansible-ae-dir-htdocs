@@ -47,12 +47,11 @@ body {
 }
 
 #footer {
-  width:100%;
   border-top:1px #202020 solid;
   margin-top:2em;
   margin:0;
-  padding:0.5em;
-  font-size:0.8em;
+  padding:0.7em;
+  font-size:0.9em;
 }
 
 p.pagetitle,p.pagesubtitle,h1,h2,h3,h4 {

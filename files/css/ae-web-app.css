@@ -48,8 +48,8 @@ form table th {
 }
 
 .tip {
-  padding:0.7em;
-  font-size:1.0em;
+  margin:0;
+  padding:1em;
   background-color:#f0f0f0;
 }
 
