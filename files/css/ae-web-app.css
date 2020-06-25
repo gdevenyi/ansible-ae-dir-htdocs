@@ -1,9 +1,4 @@
 h1:before {
-  font-size:1.5em;
-  font-weight:bold;
-  padding-bottom:0.3em;
-  counter-reset: h1counter;
-  margin-left:0;
   content: "";
 }
 
@@ -25,9 +20,9 @@ input {
 }
 
 input.submit {
-  padding:3px;
-  padding-left:10px;
-  padding-right:10px;
+  margin:0.8em;
+  margin-left:1.8em;
+  padding:0.4em 0.8em 0.4em 0.8em;
   background-color:#D8D8D8;
   border:2px solid #cccccc;
   border-top-color:#eeeeee;
