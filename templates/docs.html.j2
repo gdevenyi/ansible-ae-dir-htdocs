@@ -569,18 +569,16 @@
     <td><a href="#schema-oc-aeGroup">aeGroup</a></td>
   </tr>
   <tr>
-    <td>cn=ae-tag-init</td>
-    <td>Tag for all entries created during initial load</td>
-    <td><a href="#schema-oc-aeTag">aeTag</a></td>
-  </tr>
-  <tr>
     <td>cn=ae-uid-badwords</td>
-    <td>UID blacklist containing bad words</td>
+    <td>
+      This entry contains a list of bad words not allowed in 'uid' values.
+      You have to add this list yourself.
+    </td>
     <td>namedObject</td>
   </tr>
   <tr>
-    <td>cn=ae-uid-blacklist</td>
-    <td>This entry contains a blacklist for 'uid' values</td>
+    <td>cn=ae-uid-reserved</td>
+    <td>This entry contains a list of reserved 'uid' values not allowed for normal accounts</td>
     <td>namedObject</td>
   </tr>
   <tr>
