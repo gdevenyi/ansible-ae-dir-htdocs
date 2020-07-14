@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.18.1",
+         "state": "stable",
+         "scope": "minor feature",
+         "changes": "Fixed logging in ae-dir-tool",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-07-14T12:00:00+00:00"
+      },
+      {
          "version": "0.18.0",
          "state": "stable",
          "scope": "minor feature",
