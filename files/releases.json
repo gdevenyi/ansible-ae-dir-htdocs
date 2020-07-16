@@ -9,7 +9,7 @@
       {
          "version": "0.18.1",
          "state": "stable",
-         "scope": "minor feature",
+         "scope": "minor fix",
          "changes": "Fixed logging in ae-dir-tool",
          "download": "https://ae-dir.com/install.html",
          "published": "2020-07-14T12:00:00+00:00"
