@@ -26,14 +26,18 @@
     </ol>
   </li>
   <li>
+    <a href="#cli">Command-line parameters</a>
+  </li>
+  <li>
     <a href="#conf">Configuration</a>
     <ol>
-      <li><a href="#conf-general">General process parameters</a></li>
-      <li><a href="#conf-socket">Socket parameters</a></li>
-      <li><a href="#conf-ldap">LDAP connection parameters</a></li>
-      <li><a href="#conf-maps">NSS map parameters</a></li>
-      <li><a href="#conf-maps">sudo parameters</a></li>
-      <li><a href="#conf-pam">PAM parameters</a></li>
+      <li><a href="#cfg-general">Process</a></li>
+      <li><a href="#cfg-logmon">Logging &amp; monitoring</a></li>
+      <li><a href="#cfg-socket">Service socket</a></li>
+      <li><a href="#cfg-ldap">LDAP connection</a></li>
+      <li><a href="#cfg-maps">NSS map</a></li>
+      <li><a href="#cfg-maps">sudo</a></li>
+      <li><a href="#cfg-pam">PAM</a></li>
     </ol>
   </li>
 </ol>
@@ -309,222 +313,392 @@ group:  files aedir
   <a href="https://gitlab.com/ae-dir/ansible-aehostd">ansible role <em>aehostd</em></a>.
 </p>
 
+<h2 id="cli">Command-line arguments</h2>
+<p>
+  Some parameters can be set via command-line arguments:
+</p>
+<dl>
+  <dt id="cli-h">-h, --help</dt>
+  <dd>Shows help message and exits.</dd>
+  <dt id="cli-">-f CFG_FILENAME, --config CFG_FILENAME</dt>
+  <dd>
+    Pathname of configuration file
+    (default: /etc/aehostd.conf)
+  </dd>
+  <dt id="cli-p">-p PIDFILE, --pid PIDFILE</dt>
+  <dd>
+    Pathname of file for storing process-ID (PID) (default: /var/run/aehostd/aehostd.pid)
+  </dd>
+  <dt id="cli-l">-l LOG_LEVEL, --log-level LOG_LEVEL</dt>
+  <dd>
+    Level of log details (Integer), see Python's standard logging module.
+    This argument overrides configuration option <a href="#cfg-logmon">loglevel</a>.
+  </dd>
+  <dt id="cli-n">-n, --no-fork</dt>
+  <dd>
+    Do not fork or daemonise, run in the foreground.
+    Recommended when e.g. running under control of <a href="https://systemd.io/">systemd</a>.
+    (default: False)
+  </dd>
+  <dt id="cli-c">-c, --check</dt>
+  <dd>
+    Check whether demon is running.
+    (default: False)
+  </dd>
+</dl>
+
 <h1 id="conf">Configuration</h1>
 <p>
-  The following options can be set in the configuration file <em>/etc/aehostd.conf</em>:
+  The following options can be set in the ini-style configuration file <em>/etc/aehostd.conf</em>
+  (for syntax see
+  <a href="https://docs.python.org/3/library/configparser.html?highlight=configparser#supported-ini-file-structure">
+    Python docs -- Supported INI File Structure
+  </a>).
 </p>
 
-<h2 id="conf-general">General process parameters</h2>
+<h2 id="cfg-general">Process</h2>
 <p>
   The following options specify general process parameters:
 </p>
-<pre class="cfg">
-# the user name or ID aehostd should be run as
-uid = aehostd
-# the group name or ID aehostd should be run as
-gid = aehostd
+<dl>
+  <dt id="cfg-uid">uid</dt>
+  <dd>
+    The user name or numeric UID the process should be run as.
+    <br>
+    (Default: aehostd)
+  </dd>
+  <dt id="cfg-gid">gid</dt>
+  <dd>
+    The group name or numeric GID the process should be run as.
+    <br>
+    (Default: aehostd)
+  </dd>
+</dl>
 
-# Level of log details (Integer), see Python's standard logging module
-# Default: 20 (INFO)
-#loglevel = 20
+<h2 id="cfg-logmon">Logging &amp; monitoring</h2>
+<p>
+  The following options specify general process parameters:
+</p>
+<dl>
+  <dt id="cfg-loglevel">loglevel</dt>
+  <dd>
+    Level of log details (Integer), see
+    <a href="https://docs.python.org/3/library/logging.html?highlight=setlevel#levels">
+      Python's standard logging module -- Logging Levels
+    </a>
+    <br>
+    Default: 20 (INFO)
+  </dd>
+  <dt id="cfg-logsocket">logsocket</dt>
+  <dd>
+    Path name of syslog socket:
+    Setting this to a string enforces using syslog, empty string results
+    in default syslog socket /dev/log being used.
+    <br>
+    Default: None (sends log messages to stderr)
+  </dd>
+  <dt id="cfg-monitor">monitor</dt>
+  <dd>
+    Interval (seconds) at which internal monitoring data is written to log.
+    Setting this to zero or negative value disables monitor logging completely.
+    <br>
+    Default: -1.0 (disabled)
+  </dd>
+</dl>
 
-# Path name of syslog socket:
-# Setting this to a string enforces using syslog, empty string results
-# in default syslog socket /dev/log being used.
-# Default: None (sends log messages to stderr)
-#logsocket =
-
-# Interval (seconds) at which internal monitoring data is written to log.
-# Setting this to zero or negative value disables monitor logging completely.
-# The default is -1.0 (disabled).
-#monitor = 60.0
-</pre>
-
-<h2 id="conf-socket">Socket parameters</h2>
+<h2 id="cfg-socket">Service socket</h2>
 <p>
   The following options specify handling of the Unix domain socket on which
   <em>aehostd</em> listens for NSS and PAM requests:
 </p>
-<pre class="cfg">
-# Path name of service socket which must match what PAM and NSS modules expect
-# Default: /var/run/aehostd/socket
-#socketpath = /var/run/aehostd/socket
+<dl>
+  <dt id="cfg-socketpath">socketpath</dt>
+  <dd>
+    Path name of service socket where <em>aehostd</em> listens for incoming PAM and NSS requests.
+    This must match what PAM and NSS frontend modules expect.
+    <br>
+    Default: /var/run/aehostd/socket
+  </dd>
+  <dt id="cfg-sockettimeout">sockettimeout</dt>
+  <dd>
+    Timeout (seconds) of service socket
+    <br>
+    Default: 10.0 seconds
+  </dd>
+  <dt id="cfg-socketperms">socketperms</dt>
+  <dd>
+    Permissions (octal digits) set for service socket
+    <br>
+    Default: 0666 (world-readable and -writeable)
+  </dd>
+</dl>
 
-# timeout (seconds) of service socket
-# Default: 10.0 seconds
-#sockettimeout = 10.0
-
-# permissions (octal digits) used for service socket
-# Default: 0666 (world-readable and -writeable)
-#socketperms = 0666
-</pre>
-
-<h2 id="conf-ldap">LDAP connection parameters</h2>
+<h2 id="cfg-ldap">LDAP connection</h2>
 <p>
-  Various LDAP connection parameters can be set and tuned:
+  Various LDAP connection parameters can be set and tuned.
 </p>
-<pre class="cfg">
-# At least one of uri_list or uri_pool must be specified.
-# Both uri_list or uri_pool may be specified.
-# List of LDAP servers (LDAP URIs) to try first in exactly this order
-# no matter what is configured in uri_pool.
-# Default: empty list.
-uri_list = ldapi://
-
-# List of LDAP servers (LDAP URIs) to try after all LDAP URIs defined with uri_list failed.
-# This list gets rotated based on hosts's canonical FQDN for client-side load-balancing.
-# Default: empty list.
-uri_pool = ldaps://ae-dir-c1.example.com ldaps://ae-dir-c2.example.com ldaps://ae-dir-c3.example.com
-
-# The bind-DN to use when binding as service to AE-DIR with simple bind.
-# Preferably the short bind-DN should be used.
-binddn = host=srv1.example.com,ou=ae-dir
-
-# The password file to use for simple bind as identity given in binddn.
-# Default is: /var/lib/aehostd/aehostd.pw
-#bindpwfile = /var/lib/aehostd/aehostd.pw
-
-# Timeout (seconds) used for all LDAP connections/operations
-# Default: 6.0
-#timelimit = 6.0
-
-# LDAPObject cache TTL used for short-time LDAP search cache.
-# Default: 6.0
-#cache_ttl = 6.0
-
-# File containing trusted root CA certificate(s).
-# Default: None, which means use system-wide trust store.
-#tls_cacertfile = /etc/ssl/certs/cacerts.pem
-
-# File containing client certificate used for SASL/EXTERNAL bind.
-#tls_cert = /etc/aehostd.crt
-
-# File containing private key used for SASL/EXTERNAL bind.
-#tls_key = /etc/aehostd.key
-
-# Time span (seconds) after which aehostd forcibly reconnects.
-# Default: 1800 (30 min.)
-#conn_ttl = 1800.0
-</pre>
-
-<h2 id="conf-maps">NSS map parameters</h2>
 <p>
-  Parameters related to NSS maps:
+  At least one of <a href="#cfg-uri_list">uri_list</a> or
+  <a href="#cfg-uri_pool">uri_pool</a> must be specified,
+  or both can be specified.
 </p>
-<pre class="cfg">
-# Names of passwd entries to ignore
-# Default: All user names found in local file /etc/passwd
-#nss_ignore_users =
-# IDs of passwd entries to ignore
-# Default: All UIDs found in local file /etc/passwd
-#nss_ignore_uids =
-# Names of group entries to ignore
-# Default: All user names found in local file /etc/group
-#nss_ignore_groups =
-# IDs of group entries to ignore
-# Default: All UIDs found in local file /etc/group
-#nss_ignore_gids =
-# Refresh time (seconds) for NSS passwd and group maps
-# Default: 60.0 (1 min)
-#refresh_sleep = 60.0
+<dl>
+  <dt id="cfg-uri_list">uri_list</dt>
+  <dd>
+    List of LDAP servers (LDAP URIs) to try first in exactly this order
+    no matter what is configured in uri_pool.
+    <br>
+    Default: empty list
+  </dd>
+  <dt id="cfg-uri_pool">uri_pool</dt>
+  <dd>
+    List of LDAP servers (LDAP URIs) to try after all LDAP URIs defined with uri_list failed.
+    This list gets rotated based on hosts's canonical FQDN for client-side load-balancing.
+    <br>
+    Default: empty list
+  </dd>
+  <dt id="cfg-binddn">binddn</dt>
+  <dd>
+    The bind-DN to use when binding as service to AE-DIR with simple bind.
+    Preferably the short bind-DN of the <em>aeHost</em> entry should be used.
+    <br>
+    Example:
+    <br>
+    <code>binddn = host=server1.example.com,ou=ae-dir</code>
+  </dd>
+  <dt id="cfg-bindpwfile">bindpwfile</dt>
+  <dd>
+    The password file to use for simple bind as identity given in binddn.
+    <br>
+    Default: /var/lib/aehostd/aehostd.pw
+  </dd>
+  <dt id="cfg-timelimit">timelimit</dt>
+  <dd>
+    Timeout (seconds) used for all LDAP connections/operations
+    <br>
+    Default: 6.0
+  </dd>
+  <dt id="cfg-cache_ttl">cache_ttl</dt>
+  <dd>
+    LDAPObject cache TTL used for short-time LDAP search cache.
+    <br>
+    Default: 6.0
+  </dd>
+  <dt id="cfg-tls_cacertfile">tls_cacertfile</dt>
+  <dd>
+    Pathname of file containing trusted root CA certificate(s).
+    <br>
+    Default: None, which means use system-wide trust store.
+  </dd>
+  <dt id="cfg-tls_cert">tls_cert</dt>
+  <dd>
+    Pathname of file containing client certificate used for SASL/EXTERNAL bind
+  </dd>
+  <dt id="cfg-tls_key">tls_key</dt>
+  <dd>
+    Pathname of file containing client private key used for SASL/EXTERNAL bind
+  </dd>
+  <dt id="cfg-conn_ttl">conn_ttl</dt>
+  <dd>
+    Time span (seconds) after which aehostd forcibly reconnects.
+    This is used to make sure that <em>aehostd</em> chooses a replica again
+    to make sure load keeps fairly balanced over all available replicas.
+    <br>
+    Default: 1800 (30 min.)
+  </dd>
+</dl>
 
-# Minimum numeric UID to handle in passwd requests
-# Default: 0
-#nss_min_uid = 0
-# Minimum numeric GID to handle in group requests
-# Default: 0
-#nss_min_gid = 0
-# Maximum numeric UID to handle in passwd requests
-# Default: 65500
-#nss_max_uid = 65500
-# Maximum numeric GID to handle in group requests
-# Default: 65500
-#nss_max_gid = 65500
-
-# Refresh time (seconds) for hosts maps. Negative values disables hosts refresh.
-# Default: -1.0 (disabled)
-#netaddr_refresh = -1.0
-# Levels (int) to go up for deriving the hosts map search base.
-# Default: 2
-#netaddr_level = 2
-
-# Which member attribute in aeGroup entries to use
-# Default: memberUid
-#memberattr = memberUid
-
-# Name prefix used for virtual groups
-# Default:
-#vgroup_name_prefix = ae-vgrp-
-
-# Number offset (int) to be used for virtual groups
-# Default: 9000
-#vgroup_rgid_offset = 9000
-
-# Directory name where to store exported SSH authorized keys
-# Default: None (disabled)
-#sshkeys_dir = /var/lib/aehostd/sshkeys
-
-# passwd string of virtual user account used to authenticate as own aeHost object
-# Default: aehost-init:x:9042:9042:AE-DIR virtual host init account:/tmp:/usr/sbin/nologin
-#aehost_vaccount = aehost-init:x:9042:9042:AE-DIR virtual host init account:/tmp:/usr/sbin/nologin
-
-# Template string for deriving GECOS field from e.g. user name
-# Default: AE-DIR user {username}
-#gecos_tmpl = AE-DIR user {username}
-
-# Template string to use to derive homeDirectory from username and/or POSIX-IDs
-# instead of querying it via LDAP.
-# Field names which can be used in template string:
-# - username
-# - uid (for numeric POSIX-UID)
-# - gid (for numeric POSIX-GID)
-# Examples:
-# homedir_tmpl: "/home/{user}"
-# homedir_tmpl: "/run/user/{uid}"
-#homedir_tmpl =
-
-# Login shell to be used if attribute loginShell is not available
-#loginshell_default = /usr/sbin/nologin
-
-# Login shell always used not matter what's in attribute loginShell
-# Default: None (disabled)
-#loginshell_override =
-</pre>
-
-<h2 id="conf-maps">sudo parameters</h2>
+<h2 id="cfg-maps">NSS maps</h2>
 <p>
   Parameters related to NSS maps:
 </p>
-<pre class="cfg">
-# Path name of sudoers export file to be picked up by privileged helper
-# Default: /var/lib/aehostd/ae-dir-sudoers-export
-#sudoers_file = /var/lib/aehostd/ae-dir-sudoers-export
+<dl>
+  <dt id="cfg-nss_ignore_users">nss_ignore_users</dt>
+  <dd>
+    Names of passwd entries to ignore
+    <br>
+    Default: All user names found in local file /etc/passwd
+  </dd>
+  <dt id="cfg-nss_ignore_uids">nss_ignore_uids</dt>
+  <dd>
+    IDs of passwd entries to ignore
+    <br>
+    Default: All UIDs found in local file /etc/passwd
+  </dd>
+  <dt id="cfg-nss_ignore_groups">nss_ignore_groups</dt>
+  <dd>
+    Names of group entries to ignore
+    <br>
+    Default: All user names found in local file /etc/group
+  </dd>
+  <dt id="cfg-nss_ignore_gids">nss_ignore_gids</dt>
+  <dd>
+    IDs of group entries to ignore
+    <br>
+    Default: All UIDs found in local file /etc/group
+  </dd>
+  <dt id="cfg-refresh_sleep">refresh_sleep</dt>
+  <dd>
+    Refresh time (seconds) for NSS passwd and group maps
+    <br>
+    Default: 60.0 (1 min)
+  </dd>
+  <dt id="cfg-nss_min_uid">nss_min_uid</dt>
+  <dd>
+    Minimum numeric UID to handle in passwd requests
+    <br>
+    Default: 0
+  </dd>
+  <dt id="cfg-nss_min_gid">nss_min_gid</dt>
+  <dd>
+    Minimum numeric GID to handle in group requests
+    <br>
+    Default: 0
+  </dd>
+  <dt id="cfg-nss_max_uid">nss_max_uid</dt>
+  <dd>
+    Maximum numeric UID to handle in passwd requests
+    <br>
+    Default: 65500
+  </dd>
+  <dt id="cfg-nss_max_gid">nss_max_gid</dt>
+  <dd>
+    Maximum numeric GID to handle in group requests
+    <br>
+    Default: 65500
+  </dd>
+  <dt id="cfg-netaddr_refresh">netaddr_refresh</dt>
+  <dd>
+    Refresh time (seconds) for hosts maps. Negative values disables hosts refresh.
+    <br>
+    Default: -1.0 (disabled)
+  </dd>
+  <dt id="cfg-netaddr_level">netaddr_level</dt>
+  <dd>
+    Levels (int) to go up for deriving the hosts map search base.
+    <br>
+    Default: 2
+    = 2
+  </dd>
+  <dt id="cfg-memberattr">memberattr</dt>
+  <dd>
+    Which member attribute in aeGroup entries to use
+    <br>
+    Default: memberUid
+  </dd>
+  <dt id="cfg-vgroup_name_prefix">vgroup_name_prefix</dt>
+  <dd>
+    Name prefix used for virtual groups
+    <br>
+    Default: ae-vgrp-
+  </dd>
+  <dt id="cfg-vgroup_rgid_offset">vgroup_rgid_offset</dt>
+  <dd>
+    Number offset (int) to be used for virtual groups
+    <br>
+    Default: 9000
+  </dd>
+  <dt id="cfg-sshkeys_dir">sshkeys_dir</dt>
+  <dd>
+    Directory name where to store exported SSH authorized keys
+    <br>
+    Default: None (disabled)
+  </dd>
+  <dt id="cfg-aehost_vaccount">aehost_vaccount</dt>
+  <dd>
+    passwd string of virtual user account used to authenticate as own aeHost object
+    <br>
+    Default: aehost-init:x:9042:9042:AE-DIR virtual host init account:/tmp:/usr/sbin/nologin
+  </dd>
+  <dt id="cfg-gecos_tmpl">gecos_tmpl</dt>
+  <dd>
+    Template string for deriving GECOS field from e.g. user name
+    <br>
+    Default: AE-DIR user {username}
+  </dd>
+  <dt id="cfg-homedir_tmpl">homedir_tmpl</dt>
+  <dd>
+    Template string to use to derive homeDirectory from username and/or POSIX-IDs
+    instead of querying it via LDAP.
+    Field names which can be used in template string:
+    <ul>
+      <li>username</li>
+      <li>uid (for numeric POSIX-UID)</li>
+      <li>gid (for numeric POSIX-GID)</li>
+    </ul>
+    <br>
+    Examples:
+    <br>
+    <code>homedir_tmpl = /home/{user}</code>
+    <br>
+    <code>homedir_tmpl = /run/user/{uid}</code>
+  </dd>
+  <dt id="cfg-loginshell_default">loginshell_default</dt>
+  <dd>
+    Login shell used if LDAP attribute <var>loginShell</var> is not available.
+    <br>
+    Default: /usr/sbin/nologin
+  </dd>
+  <dt id="cfg-loginshell_override">loginshell_override</dt>
+  <dd>
+    Login shell always used not matter what's in LDAP attribute <var>loginShell</var>.
+  </dd>
+</dl>
 
-# Directory name where privileged helper stores sudoers export file
-# Default: /etc/sudoers.d
-#sudoers_includedir = /etc/sudoers.d
-# pathname of visudo executable
-# Default: /usr/sbin/visudo
-#visudo_exec = /usr/sbin/visudo
-# pathname of visudo cvtsudoers
-# Default: /usr/bin/cvtsudoers
-#cvtsudoers_exec = /usr/bin/cvtsudoers
-</pre>
+<h2 id="cfg-maps">sudoers</h2>
+<p>
+  Parameters related to sudoers security policy:
+</p>
+<dl>
+  <dt id="cfg-sudoers_file">sudoers_file</dt>
+  <dd>
+    Pathname of sudoers export file to be picked up by privileged helper
+    <br>
+    Default: /var/lib/aehostd/ae-dir-sudoers-export
+  </dd>
+  <dt id="cfg-sudoers_includedir">sudoers_includedir</dt>
+  <dd>
+    Directory name where privileged helper stores sudoers export file
+    <br>
+    Default: /etc/sudoers.d
+  </dd>
+  <dt id="cfg-visudo_exec">visudo_exec</dt>
+  <dd>
+    Pathname of <a href="https://www.sudo.ws/man/1.9.1/visudo.man.html">visudo</a>
+    executable used to check sudoers syntax.
+    <br>
+    Default: /usr/sbin/visudo
+  </dd>
+  <dt id="cfg-cvtsudoers_exec"></dt>
+  <dd>
+    Pathname of <a href="https://www.sudo.ws/man/1.9.1/cvtsudoers.man.html">cvtsudoers</a>
+    executable used to convert LDAP entries (LDIF) to sudoers syntax.
+    <br>
+    Default: /usr/bin/cvtsudoers
+  </dd>
+</dl>
 
-<h2 id="conf-pam">PAM parameters</h2>
+<h2 id="cfg-pam">PAM</h2>
 <p>Parameters used by the PAM handler:</p>
-<pre class="cfg">
-# Cache TTL (seconds) of PAM authc results
-# Default: -1 (disabled)
-#pam_authc_cache_ttl =
-
-# LDAP filter template used for checking authorization of a user
-# Default: None (disabled)
-#pam_authz_search =
-
-# Error message sent to user about password change disabled/denied
-# Default: None (no details)
-#pam_passmod_deny_msg =
-</pre>
+<dl>
+  <dt id="cfg-pam_authc_cache_ttl">pam_authc_cache_ttl</dt>
+  <dd>
+    Cache TTL (seconds) of PAM authc results
+    <br>
+    Default: -1 (disabled)
+  </dd>
+  <dt id="cfg-pam_authz_search">pam_authz_search</dt>
+  <dd>
+    LDAP filter template used for checking authorization of a user
+    <br>
+    Default: None (disabled)
+  </dd>
+  <dt id="cfg-pam_passmod_deny_msg">pam_passmod_deny_msg</dt>
+  <dd>
+    Error message sent to user about password change disabled/denied
+    <br>
+    Default: None (no details)
+  </dd>
+</dl>
 
 {% endblock content %}
