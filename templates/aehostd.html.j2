@@ -36,7 +36,7 @@
       <li><a href="#cfg-socket">Service socket</a></li>
       <li><a href="#cfg-ldap">LDAP connection</a></li>
       <li><a href="#cfg-maps">NSS map</a></li>
-      <li><a href="#cfg-maps">sudo</a></li>
+      <li><a href="#cfg-sudo">sudo</a></li>
       <li><a href="#cfg-pam">PAM</a></li>
     </ol>
   </li>
@@ -644,9 +644,11 @@ group:  files aedir
   </dd>
 </dl>
 
-<h2 id="cfg-sudoers">sudoers</h2>
+<h2 id="cfg-sudo">sudo</h2>
 <p>
-  Parameters related to sudoers security policy:
+  Parameters related to synchronisation of security policy file
+  <a href="https://www.sudo.ws/man/1.9.1/sudoers.man.html">SUDOERS(5)</a>
+  converted from <a href="docs.html#schema-oc-aeSudoRule">aeSudoRule</a> entries:
 </p>
 <dl>
   <dt id="cfg-sudoers_file">sudoers_file</dt>
