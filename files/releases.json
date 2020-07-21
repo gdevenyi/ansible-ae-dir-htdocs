@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.19.0",
+         "state": "stable",
+         "scope": "minor feature",
+         "changes": "Added support for Ubuntu 20.04 LTS, fixed loading initial data",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-07-21T12:00:00+00:00"
+      },
+      {
          "version": "0.18.1",
          "state": "stable",
          "scope": "minor fix",
