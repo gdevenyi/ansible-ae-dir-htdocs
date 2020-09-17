@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.20.3",
+         "state": "stable",
+         "scope": "minor feature",
+         "changes": "Added ansible vars for bind_proxy config parameters.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-09-17T14:00:00+00:00"
+      },
+      {
          "version": "0.20.2",
          "state": "stable",
          "scope": "minor fix",
