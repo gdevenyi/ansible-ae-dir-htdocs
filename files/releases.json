@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.22.0",
+         "state": "stable",
+         "scope": "minor feature",
+         "changes": "Web apps are now running under control of gunicorn (instead of uwsgi).",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-09-20T11:30:00+00:00"
+      },
+      {
          "version": "0.21.0",
          "state": "stable",
          "scope": "minor feature",
