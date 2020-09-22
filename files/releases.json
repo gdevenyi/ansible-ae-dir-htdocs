@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.22.1",
+         "state": "stable",
+         "scope": "minor fix",
+         "changes": "Install web2ldap 1.5.98 with a work-around for gunicorn.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-09-22T08:00:00+00:00"
+      },
+      {
          "version": "0.22.0",
          "state": "stable",
          "scope": "minor feature",
