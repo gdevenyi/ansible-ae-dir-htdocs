@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.23.1",
+         "state": "stable",
+         "scope": "minor fix",
+         "changes": "Explicitly use ld.bfd for linking during pip installation required on CentOS 8.2+.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-10-08T01:00:00+00:00"
+      },
+      {
          "version": "0.23.0",
          "state": "stable",
          "scope": "major feature",
