@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.24.1",
+         "state": "stable",
+         "scope": "minor fix",
+         "changes": "Fixed AppArmor on Ubuntu.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-11-03T21:00:00+00:00"
+      },
+      {
          "version": "0.24.0",
          "state": "stable",
          "scope": "minor feature",
