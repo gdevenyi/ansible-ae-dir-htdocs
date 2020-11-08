@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.24.3",
+         "state": "stable",
+         "scope": "minor feature",
+         "changes": "AppArmor ABI version 3.0 used on openSUSE Tumbleweed and Ubuntu.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-11-06T12:00:00+00:00"
+      },
+      {
          "version": "0.24.2",
          "state": "stable",
          "scope": "minor fix",
