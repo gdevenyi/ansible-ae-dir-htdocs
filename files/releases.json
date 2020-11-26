@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.24.6",
+         "state": "stable",
+         "scope": "major fix",
+         "changes": "Enforce installation of web2ldap bug-fix release 1.5.112+.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2020-11-26T21:00:00+00:00"
+      },
+      {
          "version": "0.24.5",
          "state": "stable",
          "scope": "minor feature",
