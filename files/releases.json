@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.24.10",
+         "state": "stable",
+         "scope": "minor fix",
+         "changes": "Default for system logging options now empty. Added more HTTP security headers.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2021-02-04T19:00:00+00:00"
+      },
+      {
          "version": "0.24.9",
          "state": "stable",
          "scope": "minor fix",
