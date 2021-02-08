@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.24.11",
+         "state": "stable",
+         "scope": "minor fix",
+         "changes": "Upgrade to slapdcheck 3.7.0.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2021-02-08T20:00:00+00:00"
+      },
+      {
          "version": "0.24.10",
          "state": "stable",
          "scope": "minor fix",
