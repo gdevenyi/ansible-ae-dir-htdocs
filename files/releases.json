@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.24.12",
+         "state": "stable",
+         "scope": "minor feature",
+         "changes": "Service group members are now allowed to read attribute aeDisplayNameGroups.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2021-02-11T20:00:00+00:00"
+      },
+      {
          "version": "0.24.11",
          "state": "stable",
          "scope": "minor fix",
