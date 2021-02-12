@@ -336,9 +336,8 @@ group:  files aedir
   </dd>
   <dt id="cli-n">-n, --no-fork</dt>
   <dd>
-    Do not fork or daemonise, run in the foreground.
-    Recommended when e.g. running under control of <a href="https://systemd.io/">systemd</a>.
-    (default: False)
+    Not used anymore since 1.2.0. Running in foreground is now the default because
+    <a href="https://systemd.io/">systemd</a> is used almost everywhere.
   </dd>
   <dt id="cli-c">-c, --check</dt>
   <dd>
@@ -363,15 +362,11 @@ group:  files aedir
 <dl>
   <dt id="cfg-uid">uid</dt>
   <dd>
-    The user name or numeric UID the process should be run as.
-    <br>
-    (Default: aehostd)
+    Not used anymore since 1.2.0.
   </dd>
   <dt id="cfg-gid">gid</dt>
   <dd>
-    The group name or numeric GID the process should be run as.
-    <br>
-    (Default: aehostd)
+    Not used anymore since 1.2.0.
   </dd>
 </dl>
 
