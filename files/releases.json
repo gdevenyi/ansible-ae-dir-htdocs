@@ -7,6 +7,14 @@
    "tags": "iam, identity-management, ldap, openldap, nis, pam, nss, security, authentication-directory",
    "releases": [
       {
+         "version": "0.24.14",
+         "state": "stable",
+         "scope": "minor fix",
+         "changes": "Fixed installation on SLE15SP2.",
+         "download": "https://ae-dir.com/install.html",
+         "published": "2021-02-27T14:00:00+00:00"
+      },
+      {
          "version": "0.24.13",
          "state": "stable",
          "scope": "minor fix",
