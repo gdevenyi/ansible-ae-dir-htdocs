@@ -1,0 +1,21 @@
+{% extends htdocs_layout %}
+
+{% block head_title %}EKCA{% endblock %}
+{% block head_pagedescription %}Guide for initializing and using EKCA{% endblock %}
+
+{% block content %}
+<p>
+  <strong>Intended Audience:</strong>
+  All persons acting as &AElig;-DIR admins
+</p>
+
+<p>
+  If ansible variable <var>ekca_enabled</var> is set to <var>True</var>
+  two additonal services are installed on &AElig;-DIR providers:
+</p>
+<ul>
+  <li>ekca-service</li>
+  <li>ekca-agent</li>
+</ul>
+
+{% endblock content %}
