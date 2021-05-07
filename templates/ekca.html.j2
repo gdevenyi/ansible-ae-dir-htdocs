@@ -11,18 +11,11 @@
 </p>
 
 <ol>
-  <li>
-    <a href="#install">Installation</a>
-  </li>
-  <li>
-    <a href="#init">Initialization / key generation</a>
-  </li>
-  <li>
-    <a href="#activate">Activation on start</a>
-  </li>
-  <li>
-    <a href="#rotation">Key Rotation</a>
-  </li>
+  <li><a href="#install">Installation</a></li>
+  <li><a href="#init">Initialization / key generation</a></li>
+  <li><a href="#activate">Activation on start</a></li>
+  <li><a href="#rotation">Key Rotation</a></li>
+  <li><a href="#client">Client Configuration</a></li>
 </ol>
 
 <p>
@@ -170,5 +163,41 @@ ssh-rsa AA&hellip;gQ== {{ ekca_name }} on {{ inventory_hostname }}
   Don't forget to update the trusted authority key set on all the affected SSH systems:
   Add the new generated SSH-CA key, remove the old SSH-CA key.
 </p>
+
+
+<h1 id="client">Client Configuration</h1>
+<p>
+  On the SSH client you have to
+  <a href="https://ekca.stroeder.com/install.html#client">install ekca-client</a>.
+</p>
+<p>
+  Store the following config file to <code>$HOME/.ekca_client</code>:
+</p>
+
+<pre class="cli">
+[ekca_client]
+
+baseurl = https://{{ aedir_main_provider_hostname }}/ekca
+
+# name of SSH-CA is always empty with AE-DIR
+sshca_name = 
+
+# trusted root CA cert
+ca_certs = /etc/ssl/ca-bundle.pem
+
+# directory where SSH command line tools are installed
+#ssh_cmd_dir = /usr/bin
+
+# where to find the ssh-keygen command-line tool
+ssh_keygen = ssh-keygen
+
+# where to find the ssh-keygen command-line tool
+ssh_add = ssh-add
+
+# 8 digit OTP with OATH identifier for yubikey as prefix
+otp_regex = ^ubhe[0-9]{8}[0-9]{8}$
+# 6-digit OTP
+#otp_regex = ^[0-9]{6}$
+</pre>
 
 {% endblock content %}
