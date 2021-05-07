@@ -1434,6 +1434,16 @@
   Person entries are added using object class <var>aePerson</var>.
   Note that such an entry is not a user account and thus cannot
   authenticate to a the directory.
+</p>
+<p>
+  Despite the object class name <var>aePerson</var> these entries rather
+  represent contracts with persons (e.g. employment/freelancing/customer
+  contracts, or some other user subscription) than persons.
+  Thus it is highly recommended to maintain the attributes
+  <var>aeNotBefore</var> and <var>aeNotAfter</var> to represent the
+  contract period.
+</p>
+<p>
   Typically <var>aePerson</var> are maintained by human resource
   (HR) or sales departments (for customers), optionally synchronized
   from HR database or a customer relationship management (CRM)
@@ -1442,8 +1452,9 @@
 <dl id="schema-oc-aePerson-attributes">
   <dt>uniqueIdentifier</dt>
   <dd>
-    Unique primary key possibly used for synchronisation.
-    This attribute is readable to various roles.
+    Unique primary key possibly possibly used for synchronisation with HR
+    or CRM systems (e.g. contract number). This attribute is readable to
+    various roles and thus is not really considered confidential.
   </dd>
   <dt>employeeNumber</dt>
   <dd>
