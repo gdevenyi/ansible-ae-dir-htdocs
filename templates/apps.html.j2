@@ -35,6 +35,9 @@
     </ol>
   </li>
   <li>
+    <a href="#ssh-ca">OpenSSH Certificate Authority</a>
+  </li>
+  <li>
     <a href="#ssh-proxy">SSH proxy</a>
   </li>
   <li>
@@ -251,6 +254,32 @@
   </li>
   <li>
     <a href="https://arthurdejong.org/nss-pam-ldapd/nslcd.conf.5">nslcd.conf(5) manual page</a>
+  </li>
+</ul>
+
+<h1 id="ssh-ca">OpenSSH Certificate Authority</h1>
+<p>
+  To avoid the need for out-of-band trust process for authorized keys 
+  and enforce rotation of user keys it is recommend to issue temporary 
+  OpenSSH user certificates only valid for a limited time-span (e.g. a few hours).
+  Combined with two-factor authentication this gives you higher security
+  for your SSH logins while preserving usability also when accessing
+  many machines (e.g. with <em>ansible</em>).
+</p>
+<p>
+  See also:
+</p>
+<ul>
+  <li>
+    <a href="ekca.html">&AElig;-DIR integration of EKCA</a>
+  </li>
+  <li>
+    <a href="https://ekca.stroeder.com">EKCA project web site</a>
+  </li>
+  <li>
+    <a href="https://www.youtube.com/watch?v=E1XP1paYIj0">
+      Lightning Talk at LDAPcon 2019: EKCA - Temporary OpenSSH user certs used as login &quot;tickets&quot;
+    </a>
   </li>
 </ul>
 

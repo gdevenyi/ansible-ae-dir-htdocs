@@ -4,18 +4,116 @@
 {% block head_pagedescription %}Guide for initializing and using EKCA{% endblock %}
 
 {% block content %}
+
 <p>
   <strong>Intended Audience:</strong>
   All persons acting as &AElig;-DIR admins
 </p>
 
+<ol>
+  <li>
+    <a href="#install">Installation</a>
+  </li>
+  <li>
+    <a href="#init">Initialization / key generation</a>
+  </li>
+  <li>
+    <a href="#activate">Activation on start</a>
+  </li>
+  <li>
+    <a href="#rotation">Key Rotation</a>
+  </li>
+</ol>
+
+<h1 id="install">Installation</h1>
 <p>
-  If ansible variable <var>ekca_enabled</var> is set to <var>True</var>
-  two additonal services are installed on &AElig;-DIR providers:
+  For installing EKCA on &AElig;-DIR provider set this ansible variable:
 </p>
-<ul>
-  <li>ekca-service</li>
-  <li>ekca-agent</li>
-</ul>
+<code>ekca_enabled: True</code>
+<p>
+  After next <a href="install.html#server">ansible playbook run</a> two
+  additional services are installed and enabled on &AElig;-DIR providers:
+</p>
+<dl>
+  <dt>ekca-service</dt>
+  <dd>
+    This is a web service reachable via the web server on URL
+    <var>/ekca</var>. It will authenticate the user, create the new user's
+    key pair and will sign the user certificate by using the SSH key agent
+    started as service <em>ekca-agent</em>.
+  </dd>
+  <dt>ekca-agent</dt>
+  <dd>
+    This service mainly starts an <em>ssh-agent</em> process which listens
+    on a certain Unix domain socket.
+  </dd>
+</dl>
+
+<h1 id="init">Initialization / key generation</h1>
+<p>
+  SSH-CA keys are supposed to only exist on the &AElig;-DIR provider. For
+  high availability you run several &AElig;-DIR providers each with its own
+  SSH-CA key pair. You then distribute the public keys of all these SSH-CA
+  as trusted authority keys to the SSH systems. These avoids having to copy
+  private SSH-CA keys around.
+</p>
+<p>
+  Note:<br>
+  If you plan to use CA keys from crypto hardware (HSM) you have to
+  follow the vendor-specific key-generation instructions and stick to
+  security best practices recommend by the vendor.
+</p>
+<p>
+  The SSH-CA private key is protected by a pass-phrase which you must set
+  at initial key generation and provide interactively each time during
+  startup. For staring the key generation you simply invoke the script
+  <code>ekca-key-gen.sh</code>.
+</p>
+<pre class="cli">
+# /opt/ae-dir/bin/ekca-key-gen.sh
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /opt/ae-dir/etc/ekca/priv/{{ ekca_name }}
+Your public key has been saved in /opt/ae-dir/etc/ekca/priv/{{ ekca_name }}.pub
+The key fingerprint is:
+SHA256:r3&hellip;HI {{ ekca_name }} on {{ inventory_hostname }}
+The key's randomart image is:
++---[RSA 4096]----+
+|@*.  .           |
+&hellip;
+|..    oooo       |
++----[SHA256]-----+
+</pre>
+
+<h1 id="activate">Activation on start</h1>
+<p>
+  While service <em>ekca-agent</em> starts automatically the private key of
+  the SSH-CA has to be manually loaded into the key agent by providing the key
+  passphrase. This avoids having to grant any file access to any service
+  and allows PKCS#11-based integration of crypto hardware (HSM).
+</p>
+<pre class="cli">
+# /opt/ae-dir/bin/ekca-key-add.sh
+Enter passphrase for /opt/ae-dir/etc/ekca/priv/{{ ekca_name }}:
+Identity added: /opt/ae-dir/etc/ekca/priv/{{ ekca_name }} ({{ ekca_name }} on {{ inventory_hostname }})
+ssh-rsa AA&hellip;gQ== {{ ekca_name }} on {{ inventory_hostname }}
+</pre>
+
+<h1 id="rotation">Key Rotation</h1>
+<p>
+  SSH-CA keys should not be used for an infinite period!
+  Rather you should generate new SSH-CA key pairs at regular planned intervals.
+  You can do this in a rotating manner on all &AElig;-DIR providers so that
+  the risk of locking out users is low if anything goes wrong.
+</p>
+<p>
+  For generating new SSH-CA keys (key rotation) you can simply invoke
+  <code>ekca-key-gen.sh</code> again and allow it to overwrite the old SSH-CA key pair.
+</p>
+<p>
+  Don't forget to update the trusted authority key set on all the affected SSH systems:
+  Add the new generated SSH-CA key, remove the old SSH-CA key.
+</p>
 
 {% endblock content %}
