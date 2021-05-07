@@ -124,7 +124,7 @@ ekca_enabled: True
   <code>ekca-key-gen.sh</code>.
 </p>
 <pre class="cli">
-# /opt/ae-dir/bin/ekca-key-gen.sh
+# {{ aedir_sbin }}/ekca-key-gen.sh
 Generating public/private rsa key pair.
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
@@ -149,7 +149,7 @@ The key's randomart image is:
   crypto hardware (HSM).
 </p>
 <pre class="cli">
-# /opt/ae-dir/bin/ekca-key-add.sh
+# {{ aedir_sbin }}/ekca-key-add.sh
 Enter passphrase for {{ ekca_sshca_dir }}/priv/{{ ekca_name }}:
 Identity added: {{ ekca_sshca_dir }}/priv/{{ ekca_name }} ({{ ekca_name }} on {{ inventory_hostname }})
 ssh-rsa AA&hellip;gQ== {{ ekca_name }} on {{ inventory_hostname }}
