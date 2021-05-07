@@ -74,6 +74,10 @@
 ekca_enabled: True
 </pre>
 <p>
+  For customizing some EKCA settings review the ansible variables with
+  prefix <code>ekca_</code>.
+</p>
+<p>
   After next <a href="install.html#server">ansible playbook run</a> two
   additional services are installed and enabled on &AElig;-DIR providers:
 </p>
@@ -116,7 +120,7 @@ ekca_enabled: True
 <p>
   The SSH-CA private key is protected by a pass-phrase which you must set
   at initial key generation and provide interactively each time during
-  startup. For staring the key generation you simply invoke the script
+  startup. For starting the key generation you simply invoke the script
   <code>ekca-key-gen.sh</code>.
 </p>
 <pre class="cli">
@@ -124,8 +128,8 @@ ekca_enabled: True
 Generating public/private rsa key pair.
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in /opt/ae-dir/etc/ekca/priv/{{ ekca_name }}
-Your public key has been saved in /opt/ae-dir/etc/ekca/priv/{{ ekca_name }}.pub
+Your identification has been saved in {{ ekca_sshca_dir }}/priv/{{ ekca_name }}
+Your public key has been saved in {{ ekca_sshca_dir }}/priv/{{ ekca_name }}.pub
 The key fingerprint is:
 SHA256:r3&hellip;HI {{ ekca_name }} on {{ inventory_hostname }}
 The key's randomart image is:
@@ -139,14 +143,15 @@ The key's randomart image is:
 <h1 id="activate">Activation on start</h1>
 <p>
   While service <em>ekca-agent</em> starts automatically the private key of
-  the SSH-CA has to be manually loaded into the key agent by providing the key
-  passphrase. This avoids having to grant any file access to any service
-  and allows PKCS#11-based integration of crypto hardware (HSM).
+  the SSH-CA has to be manually loaded into the key agent by interactively
+  entering the key passphrase. This avoids having to grant any file access
+  to the private key to any service and allows PKCS#11-based integration of
+  crypto hardware (HSM).
 </p>
 <pre class="cli">
 # /opt/ae-dir/bin/ekca-key-add.sh
-Enter passphrase for /opt/ae-dir/etc/ekca/priv/{{ ekca_name }}:
-Identity added: /opt/ae-dir/etc/ekca/priv/{{ ekca_name }} ({{ ekca_name }} on {{ inventory_hostname }})
+Enter passphrase for {{ ekca_sshca_dir }}/priv/{{ ekca_name }}:
+Identity added: {{ ekca_sshca_dir }}/priv/{{ ekca_name }} ({{ ekca_name }} on {{ inventory_hostname }})
 ssh-rsa AA&hellip;gQ== {{ ekca_name }} on {{ inventory_hostname }}
 </pre>
 
