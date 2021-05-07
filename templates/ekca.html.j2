@@ -1,6 +1,6 @@
 {% extends htdocs_layout %}
 
-{% block head_title %}EKCA{% endblock %}
+{% block head_title %}Integrated EKCA{% endblock %}
 {% block head_pagedescription %}Guide for initializing and using EKCA{% endblock %}
 
 {% block content %}
@@ -25,11 +25,54 @@
   </li>
 </ol>
 
+<p>
+  To avoid the need for implementing an out-of-band trust process for
+  authorized keys and enforce rotation of user keys it is recommended to
+  issue temporary OpenSSH user certificates only valid for a limited
+  time-span (e.g. a few hours). &AElig;-DIR has built-in support for that
+  based on <em>EKCA - Epheremal Keys Certificate Authority</em>.
+  <br>
+  Combined with built-in two-factor authentication this gives you higher
+  security for your SSH logins while preserving usability also when
+  accessing many machines (e.g. with <em>ansible</em>).
+</p>
+<p>
+  Note:<br>
+  Using OpenSSH user certificates currently only works with OpenSSH servers
+  and clients, not PuTTY or its derivates.
+</p>
+<p>
+  See also:
+</p>
+<ul>
+  <li>
+    <a href="https://ekca.stroeder.com">EKCA project web site</a>
+  </li>
+  <li>
+    <a href="https://www.youtube.com/watch?v=E1XP1paYIj0">
+      Lightning Talk at LDAPcon 2019: EKCA - Temporary OpenSSH user certs used as login &quot;tickets&quot;
+    </a>
+  </li>
+</ul>
+<p>
+  OpenSSH documentation:
+</p>
+<ul>
+  <li>
+    <a href="https://man.openbsd.org/ssh-keygen#CERTIFICATES">ssh-keygen(1) - CERTIFICATES</a>
+  </li>
+  <li>
+    <a href="https://man.openbsd.org/sshd_config#TrustedUserCAKeys">sshd_config(5) - TrustedUserCAKeys</a>
+  </li>
+</ul>
+
 <h1 id="install">Installation</h1>
 <p>
   For installing EKCA on &AElig;-DIR provider set this ansible variable:
 </p>
-<code>ekca_enabled: True</code>
+<pre class="cli">
+ekca_enabled: True
+</pre>
 <p>
   After next <a href="install.html#server">ansible playbook run</a> two
   additional services are installed and enabled on &AElig;-DIR providers:
@@ -44,8 +87,9 @@
   </dd>
   <dt>ekca-agent</dt>
   <dd>
-    This service mainly starts an <em>ssh-agent</em> process which listens
-    on a certain Unix domain socket.
+    This service starts an
+    <a href="https://man.openbsd.org/ssh-agent">ssh-agent(1)</a>
+    process which listens on a certain Unix domain socket.
   </dd>
 </dl>
 
@@ -53,9 +97,15 @@
 <p>
   SSH-CA keys are supposed to only exist on the &AElig;-DIR provider. For
   high availability you run several &AElig;-DIR providers each with its own
-  SSH-CA key pair. You then distribute the public keys of all these SSH-CA
-  as trusted authority keys to the SSH systems. These avoids having to copy
-  private SSH-CA keys around.
+  SSH-CA key pair. You then distribute the public keys of all these SSH-CA as
+  <a href="https://man.openbsd.org/sshd_config#TrustedUserCAKeys">trusted user authority keys</a>
+  to the SSH systems.
+</p>
+<p>
+  This avoids the need to copy private SSH-CA keys to other &AElig;-DIR
+  providers. And also private key loss on one provider does not cause any
+  harm because your other EKCA instances running on the other providers
+  will still be able to sign user certificates.
 </p>
 <p>
   Note:<br>
