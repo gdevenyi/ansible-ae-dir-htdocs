@@ -20,48 +20,8 @@
 </ol>
 
 <h1 id="monitoring">Monitoring</h1>
-<p>Done:</p>
-<ul>
-  <li>Implemented Prometheus exporter in web2ldap 1.5.45+.</li>
-  <li>Implemented Prometheus metrics for slapd (interims solution in slapdcheck 3.5.0+).</li>
-  <li>
-    Implemented simple Prometheus metrics for the multi-process web
-    apps and CRON jobs with small
-    <a href="https://gitlab.com/ae-dir/ansible-ae-dir-server/-/tree/master/files/mtail">mtail programs</a>.
-    <a href="https://github.com/google/mtail">mtail</a> has to be installed
-    (see also <a href="https://gitlab.com/ae-dir/ansible-mtail">ansible-mtail</a>).
-  </li>
-</ul>
-<p>Open:</p>
 <ul>
   <li>Implement grafana dash-boards.</li>
-</ul>
-
-<h1 id="devops">DevOps tooling</h1>
-<ul>
-  <li>
-    Scripts for local <em>slapd-ldap</em> instance used as admin proxy for
-    bulk operations from local tools.
-  </li>
-</ul>
-
-<h2 id="ansible">ansible</h2>
-<p>Done:</p>
-<ul>
-  <li>
-    Automated authentication configuration (add entry, set <var>userPassword</var>) for
-    <a href="docs.html#schema-oc-aeHost">aeHost</a> and
-    <a href="docs.html#schema-oc-aeService">aeService</a> with an
-    <a href="https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html#developing-modules-general">ansible module</a>.
-  </li>
-</ul>
-<p>Open:</p>
-<ul>
-  <li>
-    <a href="https://docs.ansible.com/ansible/developing_inventory.html">
-    Dynamic inventory</a> plugin for accessing attributes in
-    &AElig;-DIR entries
-  </li>
 </ul>
 
 <h1 id="ui">User Interface</h1>
@@ -97,16 +57,7 @@
   </li>
 </ul>
 
-<h1 id="pki">PKI</h1>
-
-<p>Done:</p>
-<ul>
-  <li>
-    <a href="ekca.html">Integration of EKCA</a>
-  </li>
-</ul>
-
-<h2 id="x509">X.509</h2>
+<h1 id="pki">X.509 PKI</h1>
 <ul>
   <li>
     Issue X.509 server certs to
