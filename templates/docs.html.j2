@@ -2001,6 +2001,17 @@
 
 <h1 id="slapd.conf">OpenLDAP configuration (slapd.conf)</h1>
 
+<p>
+  The OpenLDAP server process (slapd) is configured with a single static
+  configuration file located at <code>/opt/ae-dir/etc/openldap/slapd.conf</code>
+  which is generated during installation and potentially modified during
+  each ansible play, e.g. when after adding replicas, tweaking security
+  settings or similar.
+</p>
+<p>
+  See format description: <a href="https://www.openldap.org/software/man.cgi?query=slapd-config">slapd-config(5)</a>
+</p>
+
 <h2 id="slapd-roles">slapd replica roles</h2>
 
 <h3 id="slapd-role-provider">slapd provider</h3>
