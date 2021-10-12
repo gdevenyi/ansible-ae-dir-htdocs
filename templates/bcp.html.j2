@@ -313,6 +313,10 @@
     Make sure to use a numbering scheme which allows you to add more replicas
     for each role without having to invent new host naming scheme.
   </li>
+  <li>
+    It is recommended to add the value of ansible variable <var>openldap_server_id</var>
+    to the hostname of provider hosts.
+  </li>
 </ul>
 <p>
   If you have fine-grained access control for delegated sub domains in your
@@ -327,7 +331,8 @@
 </p>
 <p>
   Examples:<br>
-  <code>ae-dir-p1.ae-dir.example.com</code> for a provider<br>
+  <code>ae-dir-p1.ae-dir.example.com</code>
+  for a provider with <var>openldap_server_id=1</var><br>
   <code>ae-dir-c2.ae-dir.example.com</code> for a consumer
 </p>
 {% endblock content %}
