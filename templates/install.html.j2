@@ -140,7 +140,7 @@ python3 -m venv /opt/ansible
     <br>
     If you don't have a PKI yet you can setup a test certificate authority
     (CA) with shell scripts found in
-    <a href="https://gitlab.com/ae-dir/pki-scripts">pki-scripts/</a>.
+    <a href="https://code.stroeder.com/AE-DIR/pki-scripts">pki-scripts/</a>.
   </li>
 </ol>
 
@@ -154,7 +154,7 @@ python3 -m venv /opt/ansible
   <li>
     Get the ansible playbooks and roles:
     <pre class="cli">
-git clone https://gitlab.com/ae-dir/ansible-example-site myenv
+git clone https://code.stroeder.com/AE-DIR/ansible-example-site.git myenv
 cd myenv
 /opt/ansible/bin/ansible-galaxy install -r requirements.yml
 </pre>
@@ -171,7 +171,7 @@ cd myenv
 <ul>
   <li>
     Comments in file
-    <a href="https://gitlab.com/ae-dir/ansible-ae-dir-server/-/blob/master/defaults/main.yml">
+    <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/src/branch/master/defaults/main.yml">
       myenv/roles/ae-dir-server/defaults/main.yml
     </a>
     describing the use of all variables you can override to adapt
