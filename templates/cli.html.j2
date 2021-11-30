@@ -81,7 +81,7 @@
   </dt>
   <dd>
     <code>
-       ldapwhoami -x -H ldaps://{{ aedir_main_provider_hostname }} -D "uid=lisa,{{ aedir_suffix }}" -W
+       ldapwhoami -x -H ldaps://{{ aedir_main_provider_hostname }} -D "uid=lisa,{{ db_suffix }}" -W
     </code>
   </dd>
 
@@ -91,7 +91,7 @@
   </dt>
   <dd>
     <code>
-      ldapwhoami -x -H ldaps://{{ aedir_main_provider_hostname }} -D "host=bart.example.com,{{ aedir_suffix }}" -w
+      ldapwhoami -x -H ldaps://{{ aedir_main_provider_hostname }} -D "host=bart.example.com,{{ db_suffix }}" -w
     </code>
   </dd>
 
@@ -129,14 +129,14 @@
   <dt>Search for <var>aeUser</var> with username "lisa" by <var>uid</var>:</dt>
   <dd>
     <code>
-      ldapsearch -H ldaps://{{ aedir_main_provider_hostname }} -b {{ aedir_suffix }} -s sub "(uid=lisa)" "*" "+"
+      ldapsearch -H ldaps://{{ aedir_main_provider_hostname }} -b {{ db_suffix }} -s sub "(uid=lisa)" "*" "+"
     </code>
   </dd>
 
   <dt>Search on behalf of an <var>aeService</var> (with -X):</dt>
   <dd>
   <code>
-    ldapsearch -H ldaps://{{ aedir_main_provider_hostname }} -b {{ aedir_suffix }} -s sub -X 'dn:uid=system_test-1,cn=test-servers-1,cn=test,{{ aedir_suffix }}' "*" "+"
+    ldapsearch -H ldaps://{{ aedir_main_provider_hostname }} -b {{ db_suffix }} -s sub -X 'dn:uid=system_test-1,cn=test-servers-1,cn=test,{{ db_suffix }}' "*" "+"
   </code>
   </dd>
 
@@ -178,7 +178,7 @@
 </p>
 <pre id="ae-passwd-example" class="cli">
 root@ae-dir-deb-p1:~# /opt/ae-dir/bin/ae-dir-passwd bart
-new password for uid=bart,cn=ae,{{ aedir_suffix }}:
+new password for uid=bart,cn=ae,{{ db_suffix }}:
 repeat password:
 </pre>
 
@@ -194,11 +194,11 @@ repeat password:
 </p>
 <pre id="ae-add-zone-example" class="cli">
 root@ae-dir-deb-p1:~# /opt/ae-dir/bin/ae-dir-addzone test42 IAM-42 "the definite answer"
-Added cn=test42,{{ aedir_suffix }}
-Added cn=test42-init,cn=test42,{{ aedir_suffix }}
-Tagged cn=test42,{{ aedir_suffix }}
-Added cn=test42-zone-admins,cn=test42,{{ aedir_suffix }}
-Added cn=test42-zone-auditors,cn=test42,{{ aedir_suffix }}
+Added cn=test42,{{ db_suffix }}
+Added cn=test42-init,cn=test42,{{ db_suffix }}
+Tagged cn=test42,{{ db_suffix }}
+Added cn=test42-zone-admins,cn=test42,{{ db_suffix }}
+Added cn=test42-zone-auditors,cn=test42,{{ db_suffix }}
 </pre>
 
 <h1 id="openssl">OpenSSL command-line tools</h1>

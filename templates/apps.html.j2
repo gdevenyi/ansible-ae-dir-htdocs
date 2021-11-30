@@ -62,7 +62,7 @@
     Search base:
   </dt>
   <dd>
-    <code>{{ aedir_suffix }}</code>
+    <code>{{ db_suffix }}</code>
     (or whatever you configured in ansible default variable
     <var>aedir_suffix</var>)
   </dd>
@@ -152,11 +152,11 @@
     <dl>
       <dt>Hosts (OS login):</dt>
       <dd>
-        <code>host=&lt;canonical hostname&gt;,{{ aedir_suffix }}</code>
+        <code>host=&lt;canonical hostname&gt;,{{ db_suffix }}</code>
       </dd>
       <dt>Server services (application/service login):</dt>
       <dd>
-        <code>uid=&lt;service name&gt;,{{ aedir_suffix }}</code>
+        <code>uid=&lt;service name&gt;,{{ db_suffix }}</code>
       </dd>
     </dl>
   </dd>

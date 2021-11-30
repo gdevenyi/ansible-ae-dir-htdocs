@@ -52,11 +52,11 @@
   </tr>
   <tr>
     <td>Search base</td>
-    <td>{{ aedir_suffix }}</td>
+    <td>{{ db_suffix }}</td>
   </tr>
   <tr>
     <td>LDAP URL</td>
-    <td><code>ldaps://{{ aedir_main_provider_hostname }}/{{ aedir_suffix }}</code></td>
+    <td><code>ldaps://{{ aedir_main_provider_hostname }}/{{ db_suffix }}</code></td>
   </tr>
 </table>
 <p>
@@ -66,13 +66,13 @@
 </p>
 
 <pre>
-$ LDAPTLS_CACERT=/etc/ssl/ca-bundle.pem ldapwhoami -H ldaps://{{ aedir_main_provider_hostname }} -x -D "uid=zots,{{ aedir_suffix }}" -w CorrectHorseBatteryStaple
-dn:uid=zots,cn=test,{{ aedir_suffix }}
+$ LDAPTLS_CACERT=/etc/ssl/ca-bundle.pem ldapwhoami -H ldaps://{{ aedir_main_provider_hostname }} -x -D "uid=zots,{{ db_suffix }}" -w CorrectHorseBatteryStaple
+dn:uid=zots,cn=test,{{ db_suffix }}
 </pre>
 
 <pre>
-LDAPTLS_CACERT=/etc/ssl/ca-bundle.pem ldapsearch -LLL -H ldaps://{{ aedir_main_provider_hostname }} -x -D "uid=zots,{{ aedir_suffix }}" -w CorrectHorseBatteryStaple -b "{{ aedir_suffix }}" "(uid=zots)"
-dn: uid=zots,cn=test,{{ aedir_suffix }}
+LDAPTLS_CACERT=/etc/ssl/ca-bundle.pem ldapsearch -LLL -H ldaps://{{ aedir_main_provider_hostname }} -x -D "uid=zots,{{ db_suffix }}" -w CorrectHorseBatteryStaple -b "{{ db_suffix }}" "(uid=zots)"
+dn: uid=zots,cn=test,{{ db_suffix }}
 uid: zots
 uidNumber: 30019
 cn:: SG9yc3QgUsO8YmV6YWhs
@@ -84,7 +84,7 @@ objectClass: aeObject
 objectClass: aeUser
 objectClass: posixAccount
 objectClass: ldapPublicKey
-aePerson: uniqueIdentifier=INIT-PERSON-ID-42,cn=people,{{ aedir_suffix }}
+aePerson: uniqueIdentifier=INIT-PERSON-ID-42,cn=people,{{ db_suffix }}
 mail: horst@example.com
 &hellip;
 </pre>

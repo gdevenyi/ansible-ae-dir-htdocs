@@ -1,6 +1,9 @@
 ---
 # defaults file for roles/ae-dir
 
+# Suffix of the main user management database
+db_suffix: "ou=ae-dir"
+
 # Some paths for tools
 document_root: "/opt/ae-dir/htdocs"
 
