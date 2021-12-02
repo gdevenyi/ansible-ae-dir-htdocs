@@ -20,7 +20,7 @@
     </ol>
   </li>
   <li>
-    <a href="#ae-dir">&AElig;-DIR command-line tools</a>
+    <a href="#ae-dir-tool">&AElig;-DIR command-line tools</a>
     <ol>
       <li><a href="#ae-passwd">ae-dir-passwd</a></li>
       <li><a href="#ae-add-zone">ae-dir-addzone</a></li>
@@ -32,6 +32,9 @@
       <li><a href="#openssl-s_client">openssl s_client</a></li>
       <li><a href="#openssl-verify">openssl verify</a></li>
     </ol>
+  </li>
+  <li>
+    <a href="#ae-dir-maintenance">&AElig;-DIR maintenance scripts</a>
   </li>
 </ol>
 
@@ -142,7 +145,7 @@
 
 </dl>
 
-<h1 id="ae-dir">&AElig;-DIR command-line tools</h1>
+<h1 id="ae-dir-tool">&AElig;-DIR command-line tools</h1>
 
 <p>
   Various command-line tools are installed on the provider systems
@@ -238,4 +241,56 @@ Added cn=test42-zone-auditors,cn=test42,{{ db_suffix }}
   <a href="https://www.openssl.org/docs/manmaster/man1/verify.html">verify(1)</a>
   is useful to validate a certificate (chain) against a locally CA certificate chain.
 </p>
+
+
+<h1 id="ae-dir-maintenance">&AElig;-DIR maintenance scripts</h1>
+
+<p>
+  Some scripts installed in /opt/ae-dir/sbin are useful for database maintenance:
+</p>
+<dl>
+
+  <dt>ae-dir-csrgen.sh</dt>
+  <dd>
+    Generates a new key pair and CSR for the next TLS server certificate.
+  </dd>
+
+  <dt>ae-dir-fix-db-permissions.sh</dt>
+  <dd>
+    Fixes ownership and permissions of all database directories and files
+    especially useful after doing manual maintenance as user <em>root</em>.
+  </dd>
+
+  <dt>ae-dir-reload.sh</dt>
+  <dd>
+    Exports and reloads all database, useful when databases' on-disk format
+    changed e.g. after OpenLDAP update or certain re-configuration.
+  </dd>
+
+  <dt>ae-dir-replica-reset.sh</dt>
+  <dd>
+    Removes all database files and restarts service <em>ae-slapd</em>
+    to trigger replicating all data from another replica.
+  </dd>
+
+  <dt>ae-dir-slapcat.sh</dt>
+  <dd>
+    Exports all databases to LDIF files.
+    This script is automatically invoked as CRON job.
+  </dd>
+
+  <dt>ae-dir-slapindex.sh</dt>
+  <dd>
+    Re-indexes all databases, useful when databases' on-disk format
+    changed e.g. after OpenLDAP update or index configuration changed.
+  </dd>
+
+  <dt>ae-dir-compact-db.sh</dt>
+  <dd>
+    All databases are compacted with <code>mdb_copy -c</code>,
+    especially useful when MDB got fragmented, e.g. by often changing bigger
+    group entries.    
+  </dd>
+
+</dl>
 {% endblock content %}
