@@ -2053,7 +2053,8 @@
     <td>cn=accesslog-ae-dir</td>
     <td>1</td>
     <td>
-      Real database storage backend used for storing  audit log entries of all write operations.
+      Real database storage backend available only on providers for storing
+      audit log entries of all write operations.
       The schema is formally specified in the Internet draft
       <a href="https://tools.ietf.org/html/draft-chu-ldap-logschema">draft-chu-ldap-logschema</a>.
     </td>
@@ -2094,7 +2095,7 @@
   </dd>
   <dt id="slapo-accesslog">slapo-accesslog</dt>
   <dd>
-    used to log all write operations to the separate naming context
+    used on providers to log all write operations to the separate naming context
     <a href="#dit-accesslog">cn=accesslog-ae-dir</a>
     (see also <a href="https://www.openldap.org/software/man.cgi?query=slapo-accesslog">slapo-accesslog(5)</a>)
   </dd>
