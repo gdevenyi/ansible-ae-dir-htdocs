@@ -15,6 +15,7 @@ htdocs_templates:
   - bcp
   - cli
   - demo
+  - devel
   - docs
   - ekca
   - faq
