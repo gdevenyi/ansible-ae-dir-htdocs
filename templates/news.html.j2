@@ -5,7 +5,34 @@
 
 {% block content %}
 
-<p id="202112042200" class="pagesubtitle">2021-12-04T22:00 - New web content</p>
+<p id="202112051200" class="pagesubtitle">2021-12-05 - Support for Debian buster ends 2022-02-28</p>
+<p>
+  Tested free support for Debian buster (10.x) will be ceased by end of February 2022:
+</p>
+<ul>
+  <li>
+    The ansible roles, especially new features, are not guaranteed to
+    work on Debian buster anymore.
+  </li>
+  <li>
+    The <a href="https://ae-dir.com/repo/debian/buster/">apt repository for buster</a>
+    will be available until 2022-08 to match
+    <a href="https://wiki.debian.org/DebianReleases#Production_Releases">
+    Debian's production support</a> but packages will not be updated anymore.
+  </li>
+  <li>
+    The builds of Debian packages
+    <a href="https://code.stroeder.com/AE-DIR/debian-openldap-ms">openldap-ms</a> and
+    <a href="https://code.stroeder.com/AE-DIR/debian-aehostd-modules">aehostd-modules</a>
+    are not guaranteed to work on Debian buster anymore.
+  </li>
+  <li>
+    Pull requests with specific backward-compability fixes for Debian buster
+    will likely not be accepted.
+  </li>
+</ul>
+
+<p id="202112042200" class="pagesubtitle">2021-12-04 - New web content</p>
 <p>
   There are two new sub-pages available:
 </p>
