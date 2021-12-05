@@ -41,4 +41,75 @@
   <li><a href="devel.html">Information about development resources / issue tracker</a></li>
 </ul>
 
+<p id="202112031600" class="pagesubtitle">2021-12-03 - Tagged ansible-ae-dir-server 0.31.2</p>
+<p>Changes since 0.31.1:</p>
+<ul>
+  <li>
+    Dropped support for running with accesslog database on read-only consumers.
+    With OpenLDAP 2.6 there is no useful data (e.g. authTimestamp-updates)
+    therein anymore.
+  </li>
+  <li>
+    Renamed mis-named var to correct name <code>openldap_slapo_allowed</code>.
+  </li>
+  <li>
+    Use <code>aedir_db_params</code> for generating AppArmor profile for ae-slapd.
+  </li>
+  <li>
+    <code>ae-dir-replica-reset.sh</code> is now also generated based on
+    ansible var <code>aedir_db_params</code>.
+  </li>
+</ul>
+
+<p id="202112030000" class="pagesubtitle">2021-12-03 - Tagged ansible-ae-dir-server 0.31.1</p>
+<p>Changes since 0.30.0:</p>
+<ul>
+  <li>
+    Attribute <var>sudoOrder</var> can now be used in sudoers entries.
+  </li>
+  <li>
+    Heavy re-factoring of specifying database parameters. Applying the changes
+    to existing deployments should work without issues, except some custom HTML
+    templates for web2ldap might need tweaking.
+  </li>
+  <li>
+    The maintenance scripts were re-factored to not require a running slapd
+    instance which should help to recover from issues more quickly. The scripts
+    are now listed in the CLI usage docs.
+  </li>
+  <li>
+    <code>ae-dir-slapcat.sh</code> now uses the simple database names (accesslog, um)
+    instead of the suffix in the filename of exported LDIF files to avoid equal
+    signs which are special chars in a shell.
+  </li>
+</ul>
+
+<p id="202112020000" class="pagesubtitle">2021-12-02 - git repos moved</p>
+<p>
+  All git repos of &AElig;-DIR's code were moved to a new location where you 
+  can also file tickets (and submit pull requests):
+</p>
+<p>
+  <a href="https://code.stroeder.com/AE-DIR">
+    https://code.stroeder.com/AE-DIR
+  </a>
+</p>
+<p>
+  Some Python module packages are now in a more generic org:
+</p>
+<p>
+  <a href="https://code.stroeder.com/pymod">
+    https://code.stroeder.com/pymod
+  </a>
+</p>
+<p>
+  The repos are still mirrored at gitlab.com for automated testing but 
+  without using anything like ticket queues or similar:
+</p>
+<p>
+  <a href="https://gitlab.com/ae-dir">
+    https://gitlab.com/ae-dir
+  </a>
+</p>
+
 {% endblock content %}
