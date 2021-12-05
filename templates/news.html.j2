@@ -86,7 +86,7 @@
 
 <p id="202112020000" class="pagesubtitle">2021-12-02 - git repos moved</p>
 <p>
-  All git repos of &AElig;-DIR's code were moved to a new location where you 
+  All git repos of &AElig;-DIR's code were moved to a new location where you
   can also file tickets (and submit pull requests):
 </p>
 <p>
@@ -103,7 +103,7 @@
   </a>
 </p>
 <p>
-  The repos are still mirrored at gitlab.com for automated testing but 
+  The repos are still mirrored at gitlab.com for automated testing but
   without using anything like ticket queues or similar:
 </p>
 <p>
@@ -111,5 +111,48 @@
     https://gitlab.com/ae-dir
   </a>
 </p>
+
+<p id="202111251600" class="pagesubtitle">2021-11-25 - Tagged ansible-ae-dir-server 0.30.0</p>
+<p>Changes since 0.29.1:</p>
+<ul>
+  <li>
+    <em>slapo-allowed</em> was activated which enables <em>web2ldap</em> to
+    show whether the user has write access to an attribute. If the user is not
+    allowed to change an attribute only the value will be shown, no input
+    field.
+  </li>
+  <li>
+    New tool scripts:
+    <ul>
+      <li>
+        <code>/opt/ae-dir/sbin/ae-dir-slapindex.sh</code> re-indexes all databases
+      </li>
+      <li>
+        <code>/opt/ae-dir/sbin/ae-dir-reload.sh</code> exports and re-imports all databases
+      </li>
+    </ul>
+  </li>
+  <li>
+    Several software updates: web2ldap, python-ldap0, ae-dir-pproc, slapdcheck
+  </li>
+  <li>
+    mtail now extracts etime for slapd_result metric into a bucket.
+  </li>
+  <li>
+    Code-cleaning:
+    <ul>
+      <li>Removed various obsolete stuff</li>
+      <li>Fixed ansible syntax</li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      openSUSE/SLE repos:
+      <li>Dropped support for openSUSE Leap 15.2 and SLE15SP2</li>
+      <li>now same Leap and SLE repo used</li>
+      <li>Added repo URL for upcoming Leap 15.4 and SLE15SP4</li>
+    </ul>
+  </li>
+</ul>
 
 {% endblock content %}
