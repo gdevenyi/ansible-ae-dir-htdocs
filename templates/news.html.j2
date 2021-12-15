@@ -5,6 +5,48 @@
 
 {% block content %}
 
+<p id="202112152300" class="pagesubtitle">2021-12-15 - Tagged ansible-ae-dir-server 0.32.0</p>
+<p>Changes since 0.31.3:</p>
+<ul>
+  <li>
+    Update to <a href="https://www.web2ldap.de/changes-1.6.html#r1.6.22">web2ldap 1.6.22+</a>.
+  </li>
+  <li>
+    Fixed initialization tasks on ansible 4.0+ by always setting
+    <var>aedir_init_user</var> to <var>root</var> as default.
+    You likely want to over-ride this when invoking a play.
+  </li>
+  <li>
+    OpenLDAP 2.6 is now also installed in RHEL8-alike systems.
+  </li>
+  <li>
+    slapd.conf:
+    <br>
+    Native <var>lastbind</var> directive is now used instead of obsolete
+    contrib overlay <em>slapo-lastbind</em>.
+    <br>
+    The time-stamp of last successful bind is now stored in attribute
+    <var>pwdLastSuccess</var> (see also
+    <a href="https://datatracker.ietf.org/doc/html/draft-behera-ldap-password-policy-10#section-5.3.11">
+      draft-behera-ldap-password-policy
+    </a>).
+    <br>
+    For now the module <em>lastbind</em> is still loaded to preserve the
+    attribute type description for <var>authTimestamp</var> in the
+    subschema to avoid schema violations.
+  </li>
+  <li>
+    Added
+    <a href="https://scotthelme.co.uk/coop-and-coep/">COEP/COOP/CORP</a>
+    headers to
+    <a href="https://www.web2ldap.de/web2ldapcnf.html#http_headers">web2ldap's http_headers</a>.
+  </li>
+  <li>
+    APT repo files are now created with a copy task to completely remove
+    obsolete entries.
+  </li>
+</ul>
+
 <p id="202112061600" class="pagesubtitle">2021-12-06 - Tagged ansible-ae-dir-server 0.31.3</p>
 <p>Changes since 0.31.2:</p>
 <ul>
