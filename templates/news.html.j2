@@ -5,6 +5,26 @@
 
 {% block content %}
 
+<p id="202112190000" class="pagesubtitle">2021-12-19 - Tagged ansible-ae-dir-server 0.32.1</p>
+<p>Changes since 0.32.0:</p>
+<ul>
+  <li>
+    Update to <a href="https://www.web2ldap.de/changes-1.6.html#r1.6.23">web2ldap 1.6.23+</a>.
+  </li>
+  <li>
+    New mtail-based metrics for <em>ae-slapd</em> counting replica connection
+    errors: <var>slapd_syncrepl_bind_failed</var> and <var>slapd_syncrepl_retrying</var>.
+  </li>
+  <li>
+    Added web2ldap HTML template for displaying <var>OpenLDAProotDSE</var>.
+  </li>
+  <li>
+    Prepared using
+    <a href="https://www.openldap.org/software/man.cgi?query=slapo-dds">slapo-dds(5)</a>
+    for session database.
+  </li>
+</ul>
+
 <p id="202112152300" class="pagesubtitle">2021-12-15 - Tagged ansible-ae-dir-server 0.32.0</p>
 <p>Changes since 0.31.3:</p>
 <ul>
