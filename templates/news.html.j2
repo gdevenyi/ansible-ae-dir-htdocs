@@ -5,6 +5,43 @@
 
 {% block content %}
 
+<p id="202112211200" class="pagesubtitle">2021-12-21 - Tagged ansible-ae-dir-server 0.32.2</p>
+<p>Changes since 0.32.1:</p>
+<ul>
+  <li>
+    Re-factored userPassword ACLs for providers:
+    <ul>
+      <li>
+        New ansible var <var>aedir_aeuser_write_pw_restrictions</var> is used
+        to restrict all password changes to be accept only via LDAPI.
+        In case any problem occurs with that simply set to empty list.
+      </li>
+      <li>
+        Removed search privilege. You can search for <var>pwdChangedTime</var> instead.
+      </li>
+      <li>
+        Moved up clause "by anonymous auth" for better performance
+        of bind request processing.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Minor changes in systemd units:
+    <ul>
+      <li>
+        Added <code>StandardInput=null</code> and <code>RemoveIPC=yes</code>
+        to <var>aedir_systemd_hardening</var>.
+      </li>
+      <li>
+        Use <var>aedir_systemd_logging</var> also in <em>ekca-service.service</em>.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Added missing web2ldap HTML read template for <var>OpenLDAProotDSE.html</var>.
+  </li>
+</ul>
+
 <p id="202112190000" class="pagesubtitle">2021-12-19 - Tagged ansible-ae-dir-server 0.32.1</p>
 <p>Changes since 0.32.0:</p>
 <ul>
