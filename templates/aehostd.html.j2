@@ -22,14 +22,15 @@
   <li>
     <a href="#install">Installation</a>
     <ol>
-      <li><a href="#pam-nss-modules">NSS/PAM modules</a></li>
+      <li><a href="#install-modules">NSS/PAM modules</a></li>
+      <li><a href="#install-ansible">ansible</a></li>
     </ol>
   </li>
   <li>
     <a href="#cli">Command-line parameters</a>
   </li>
   <li>
-    <a href="#conf">Configuration</a>
+    <a href="#cfg">Configuration</a>
     <ol>
       <li><a href="#cfg-general">Process</a></li>
       <li><a href="#cfg-logmon">Logging &amp; monitoring</a></li>
@@ -238,7 +239,7 @@
 
 <h1 id="install">Installation</h1>
 
-<h2 id="pam-nss-modules">NSS/PAM modules</h2>
+<h2 id="install-modules">NSS/PAM modules</h2>
 <p>
   The NSS and PAM front-end modules of Arthur de Jong's <a
   href="https://arthurdejong.org/nss-pam-ldapd/">nss-pam-ldapd</a> (aka
@@ -305,20 +306,20 @@ group:  files aedir
   </li>
 </ul>
 
-<h2 id="config">ansible</h2>
+<h2 id="install-ansible">ansible</h2>
 <p>
   Automated installation/configuration can be done with
   <a href="https://code.stroeder.com/AE-DIR/ansible-aehostd">ansible role <em>aehostd</em></a>.
 </p>
 
-<h2 id="cli">Command-line arguments</h2>
+<h1 id="cli">Command-line arguments</h1>
 <p>
   Some parameters can be set via command-line arguments:
 </p>
 <dl>
   <dt id="cli-h">-h, --help</dt>
   <dd>Shows help message and exits.</dd>
-  <dt id="cli-">-f CFG_FILENAME, --config CFG_FILENAME</dt>
+  <dt id="cli-f">-f CFG_FILENAME, --config CFG_FILENAME</dt>
   <dd>
     Pathname of configuration file
     (default: /etc/aehostd.conf)
@@ -344,7 +345,7 @@ group:  files aedir
   </dd>
 </dl>
 
-<h1 id="conf">Configuration</h1>
+<h1 id="cfg">Configuration file</h1>
 <p>
   The following options can be set in the ini-style configuration file <em>/etc/aehostd.conf</em>
   (for syntax see
