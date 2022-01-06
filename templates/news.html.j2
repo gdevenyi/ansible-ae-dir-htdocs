@@ -5,6 +5,42 @@
 
 {% block content %}
 
+<p id="202201062000" class="pagesubtitle">2022-01-06 - Tagged ansible-ae-dir-server 0.32.5</p>
+<p>Changes since 0.32.4:</p>
+<ul>
+  <li>
+    Update to <em>ae-dir-pproc 1.6.2</em>:
+    <ul>
+      <li>
+        When the user changes / resets own password an e-mail is sent to the
+        user as additional notification
+        (<a href="https://code.stroeder.com/AE-DIR/ae-dir-pproc/issues/2">implements #2</a>).
+      </li>
+      <li>
+        Removed old PyPI project <em>aedir-pproc</em> and renamed it to
+        <a href="https://pypi.org/project/ae-dir-pproc/">ae-dir-pproc</a>.
+      </li>
+    </ul>
+  </li>
+  <li>
+    All attributes of object class <var>msPwdResetPolicy</var> are now
+    declared as optional (MAY) because there are always config defaults
+    available for all these attributes. This allows to overide configured
+    defaults more easily per policy.
+  </li>
+  <li>
+    Update to <a href="https://www.web2ldap.de/changes-1.6.html#r1.6.27">web2ldap 1.6.27+</a>
+    including setting new config parameter
+    <a href="http://localhost/web2ldap.de/web2ldapcnf.html#url_path">web2ldapcnf.url_path</a>.
+  </li>
+  <li>
+    Re-factored checking whether the C wrapper modules are installed
+    (<em>ldap0</em> and <em>psutil</em>) before temporarily installing
+    build tools on platforms using Python virtualenv. Hopefully this
+    makes upgrading these modules more easy.
+  </li>
+</ul>
+
 <p id="202112231500" class="pagesubtitle">2021-12-23 - Tagged ansible-ae-dir-server 0.32.4</p>
 <p>Changes since 0.32.3:</p>
 <ul>
