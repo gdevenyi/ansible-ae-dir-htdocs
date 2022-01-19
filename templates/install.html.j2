@@ -88,7 +88,7 @@
     </ul>
   </li>
   <li>
-    Install on your admin workstation (the <em>ansible controller</em>):
+    Install on your admin workstation (the so-called <em>ansible control node</em>):
     <ul>
       <li>Python 3.6 or newer</li>
       <li>
@@ -122,13 +122,14 @@ python3 -m venv /opt/ansible
   </li>
   <li>
     Make yourself familiar with how to use command-line options for
-    <a href="https://docs.ansible.com/ansible/become.html#command-line-options">ansible become</a>.
+    <a href="https://docs.ansible.com/ansible/latest/user_guide/become.html#become">
+      ansible privilege escalation with become
+    </a>.
   </li>
   <li>
-    Check whether you can access the hosts with
-    <a href="https://docs.ansible.com/ansible/setup_module.html">ansible setup</a>:
+    Check whether you can access the hosts with:
     <pre class="cli">/opt/ansible/bin/ansible all -i 'hostname.example.com,' -m setup</pre>
-    The trailing comma after the FQDN is needed when using a hostname!
+    The trailing comma after the FQDN is needed when using a single hostname!
   </li>
   <li>
     You have to issue X.509 TLS server certificates with appropriate
@@ -179,7 +180,7 @@ cd myenv
   </li>
   <li>
     Ansible documentation about
-    <a href="https://docs.ansible.com/ansible/playbooks_variables.html">
+    <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html">
     group and host vars</a> to get a good understanding of how values are
     assigned to variables.
   </li>
@@ -325,6 +326,7 @@ EOF
   <li><a href="https://pypi.python.org/pypi/ldap0">ldap0</a></li>
   <li><a href="https://www.stroeder.com/slapdcheck.html">slapdcheck</a></li>
   <li><a href="https://www.stroeder.com/slapdsock.html">slapdsock</a></li>
+  <li><a href="https://ekca.stroeder.com/">EKCA</a></li>
   <li><a href="https://oath-ldap.stroeder.com/">OATH-LDAP</a></li>
 </ul>
 {% endblock content %}
