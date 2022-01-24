@@ -5,6 +5,39 @@
 
 {% block content %}
 
+<p id="202201241900" class="pagesubtitle">2022-01-24 - Tagged ansible-ae-dir-server 0.32.7</p>
+<p>Changes since 0.32.6:</p>
+<ul>
+  <li>
+    Re-factored use of <em>slapdcheck</em>:
+    <ul>
+      <li>
+        Renamed ansible vars <var>slapd_check_*</var> to <var>slapdcheck_*</var>.
+        Please update your <code>group_vars</code> accordingly.
+      </li>
+      <li>
+        If new ansible var <var>slapdcheck_interval</var> (seconds) is
+        greater than zero a systemd unit <code>slapdcheck.timer</code> is
+        installed which triggers <code>slapdcheck.service</code> based on
+        this interval.
+      </li>
+      <li>
+        New ansible var <var>slapdcheck_module</var> is used to specify
+        which sub-module is invoked. See file
+        <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/src/branch/master/defaults/main.yml">defaults/main.yml</a>
+        for details.
+      </li>
+      <li>
+        The old wrapper script
+        <code>/opt/ae-dir/sbin/slapd_checkmk.sh</code>
+        was replaced by
+        <code>/opt/ae-dir/sbin/slapdcheck.sh</code> which also invokes the
+        module specified <var>slapdcheck_module</var>.
+      </li>
+    </ul>
+  </li>
+</ul>
+
 <p id="202201182200" class="pagesubtitle">2022-01-18 - Released aehostd 1.5.4</p>
 <p>
   <em>aehostd 1.5.4</em> fixes a socket-reading bug which caused failures
