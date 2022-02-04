@@ -5,6 +5,33 @@
 
 {% block content %}
 
+<p id="202202041900" class="pagesubtitle">2022-02-04 - Tagged ansible-ae-dir-server 0.32.9</p>
+<p>Changes since 0.32.8:</p>
+<ul>
+  <li>
+    All systemd service units now use <code>ProtectSystem=strict</code>
+    with appropriate <code>ReadWritePaths=</code> to also bind-mount
+    non-standard directories, e.g. <code>/opt</code>, as read-only to
+    further reduce attack surface even in case AppArmor is not used.
+    <br>
+    See also:
+    <ul>
+      <li>
+        <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/17">ansible-ae-dir-server #17</a>
+      </li>
+      <li>
+        <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Sandboxing">systemd.exec(5)</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    Added appropriate
+    <a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#inappropriate-for-the-control">
+      autocomplete attribute
+    </a> to input fields in login and change password forms.
+  </li>
+</ul>
+
 <p id="202201300000" class="pagesubtitle">2022-01-30 - Tagged ansible-ae-dir-server 0.32.8</p>
 <p>Changes since 0.32.7:</p>
 <ul>
