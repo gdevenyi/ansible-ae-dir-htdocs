@@ -5,6 +5,20 @@
 
 {% block content %}
 
+<p id="202202071900" class="pagesubtitle">2022-02-07 - Tagged ansible-ae-dir-server 0.32.10</p>
+<p>Changes since 0.32.9:</p>
+<ul>
+  <li>
+    Background update process <var>aedir_pproc.cron</var> now runs as
+    non-privileged user <em>ae-dir-updater</em> which is member of
+    group <em>ae-admins</em> instead of running as <em>rootdn</em>
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/14">ansible-ae-dir-server #14</a>).
+  </li>
+  <li>
+    Update to <a href="https://www.web2ldap.de/changes-1.7.html#r1.7.1">web2ldap 1.7.1+</a>.
+  </li>
+</ul>
+
 <p id="202202041900" class="pagesubtitle">2022-02-04 - Tagged ansible-ae-dir-server 0.32.9</p>
 <p>Changes since 0.32.8:</p>
 <ul>
