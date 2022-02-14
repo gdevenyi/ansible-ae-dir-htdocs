@@ -5,6 +5,28 @@
 
 {% block content %}
 
+<p id="202202141600" class="pagesubtitle">2022-02-14 - Tagged ansible-ae-dir-server 0.32.12</p>
+<p>Changes since 0.32.11:</p>
+<ul>
+  <li>
+    Replication connections are now enforced to use TLSv1.3
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/21">ansible-ae-dir-server #21</a>)
+  </li>
+  <li>
+    Added new histogram metric <var>slapd_search_result_size</var> to mtail prog.
+  </li>
+  <li>
+    Update to <a href="https://www.web2ldap.de/changes-1.7.html#r1.7.5">web2ldap 1.7.5+</a>.
+  </li>
+  <li>
+    Update to python-slapdsock 1.2.0+ and oath-ldap-srv 1.6.1+ with
+    improved error handling.
+  </li>
+  <li>
+    Cleaned up and fixed run-time directory for EKCA.
+  </li>
+</ul>
+
 <p id="202202091900" class="pagesubtitle">2022-02-09 - Tagged ansible-ae-dir-server 0.32.11</p>
 <p>Changes since 0.32.10:</p>
 <ul>
