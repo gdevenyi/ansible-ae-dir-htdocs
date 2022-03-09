@@ -5,6 +5,26 @@
 
 {% block content %}
 
+<p id="202203081100" class="pagesubtitle">2022-03-08 - Tagged ansible-aehostd 1.5.5, new APT repo key!</p>
+<p>Changes since 1.5.4.1:</p>
+<ul>
+  <li>
+    Updated APT repository signer key.
+  </li>
+  <li>
+    Installs aehostd 1.5.5+.
+  </li>
+  <li>
+    On systems with <em>systemd</em> the service unit <em>aehostd-ph.service</em>
+    is now stopped/disabled and replaced by a
+    <a href="https://www.freedesktop.org/software/systemd/man/systemd.path.html">systemd path unit</a>
+    <em>ae-dir-sudoers-export.path</em> which triggers a service unit
+    <em>ae-dir-sudoers-export.service</em> with <code>Type=oneshot</code>
+    for moving the exported <em>sudoers</em> file to the right location
+    (<a href="https://code.stroeder.com/AE-DIR/ansible-aehostd/issues/2">implements #2</a>).
+  </li>
+</ul>
+
 <p id="202203071100" class="pagesubtitle">2022-03-07 - Tagged ansible-ae-dir-server 0.33.2, new APT repo key!</p>
 <p>Changes since 0.33.1:</p>
 <p>
