@@ -5,6 +5,36 @@
 
 {% block content %}
 
+<p id="202203161900" class="pagesubtitle">2022-03-16 - Tagged ansible-ae-dir-server 0.33.3</p>
+<p>Changes since 0.33.2:</p>
+<ul>
+  <li>
+    Improved <var>web2ldapcnf.hosts</var>:
+    <ul>
+      <li>use specific &AElig;-DIR login settings for all backends</li>
+      <li>set DB-specific descriptions</li>
+    </ul>
+  </li>
+  <li>
+    Default value for <var>openldap_syslog_level</var> set to INFO to avoid
+    double-logging with default syslog config on Debian.
+  </li>
+  <li>
+    Changes to
+    <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#System%20Call%20Filtering">
+      SystemCallFilter=
+    </a>:
+    <ul>
+      <li>
+        Added unused <code>splice()</code> system call to block list
+        (see also <a href="https://dirtypipe.cm4all.com/">Dirty Pipe Vulnerability</a>)
+      </li>
+      <li>Fixed using the correct values in <em>slapdcheck.service</em></li>
+      <li>Some internal refactoring</li>
+    </ul>
+  </li>
+</ul>
+
 <p id="202203081100" class="pagesubtitle">2022-03-08 - Tagged ansible-aehostd 1.5.5, new APT repo key!</p>
 <p>Changes since 1.5.4.1:</p>
 <ul>
