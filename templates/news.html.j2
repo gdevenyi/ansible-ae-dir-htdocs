@@ -5,6 +5,21 @@
 
 {% block content %}
 
+<p id="202203240000" class="pagesubtitle">2022-03-24 - Tagged ansible-ae-dir-server 0.33.4</p>
+<p>Changes since 0.33.3:</p>
+<p>
+  Small changes to
+  <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Sandboxing">systemd sandboxing</a>:
+</p>
+<ul>
+  <li>
+    <code>MemoryDenyWriteExecute=yes</code> set unconditionally on all supported Linux distros
+  </li>
+  <li>
+    Added <code>PrivateIPC=yes</code> to all service units
+  </li>
+</ul>
+
 <p id="202203161900" class="pagesubtitle">2022-03-16 - Tagged ansible-ae-dir-server 0.33.3</p>
 <p>Changes since 0.33.2:</p>
 <ul>
