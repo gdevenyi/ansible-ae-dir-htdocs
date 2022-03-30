@@ -5,6 +5,23 @@
 
 {% block content %}
 
+<p id="202203300000" class="pagesubtitle">2022-03-30 - Tagged ansible-ae-dir-server 0.34.0</p>
+<p>Changes since 0.33.4:</p>
+<ul>
+  <li>
+    Changed default of ansible variable <var>aedir_rundir</var> to
+    <code>/run/ae-dir</code> which nowadays is mounted as
+    <code>tmpfs</code> on all currently supported Linux distributions.
+  </li>
+  <li>
+    Some minor changes to AppArmor profiles, mainly for reducing the
+    number of harmless <code>DENIED</code> messages.
+  </li>
+  <li>
+    The quick search field in web2ldap now has attribute <code>type=&quot;search&quot;</code>.
+  </li>
+</ul>
+
 <p id="202203240000" class="pagesubtitle">2022-03-24 - Tagged ansible-ae-dir-server 0.33.4</p>
 <p>Changes since 0.33.3:</p>
 <p>
