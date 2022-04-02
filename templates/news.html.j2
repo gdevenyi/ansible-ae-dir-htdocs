@@ -5,14 +5,48 @@
 
 {% block content %}
 
-<p id="202204020000" class="pagesubtitle">2022-04-02 - Released aehostd 1.5.8</p>
-<p>
-  <em>aehostd 1.5.8</em> finally now really fixes a socket-reading bug
-  which caused failures when receiving PAM requests
-  (for details see <a href="https://code.stroeder.com/AE-DIR/aehostd/issues/3">issue #3</a>).
-  <br>
-  <strong>Update is highly recommended!</strong>
-</p>
+<p id="202204022000" class="pagesubtitle">2022-04-02 - Released aehostd 1.5.10</p>
+<ul>
+  <li>
+    <em>aehostd 1.5.8+</em> finally now really fixes a socket-reading bug
+    which caused failures when receiving PAM requests
+    (for details see <a href="https://code.stroeder.com/AE-DIR/aehostd/issues/3">issue #3</a>).
+    <br>
+    <strong>Update is highly recommended!</strong>
+  </li>
+  <li>
+    In case of password checking failure password policy information is
+    extracted from <var>ldap0.INVALID_CREDENTIALS</var> and appropriate
+    PAM result codes are returned to the caller
+    (for details see <a href="https://code.stroeder.com/AE-DIR/aehostd/issues/10">issue #10</a>).
+  </li>
+  <li>
+    When checking user or host password the search base is now taken from
+    the currently active LDAP connection which normally saves one round-trip
+    for the LDAP search operation.
+  </li>
+  <li>
+    Error handling was simplified when processing PAM authentication.
+  </li>
+  <li>
+    If the user is not known <var>PAM_USER_UNKNOWN</var> is returned in PAM
+    authentication response (without raising an exception like before).
+  </li>
+  <li>
+    PAM authentication response is now always written to log with
+    appropriate log level (<var>DEBUG</var> in case of <var>PAM_SUCCESS</var>,
+    as <var>WARNING</var> in all other cases).
+  </li>
+  <li>
+    <a href="https://docs.python.org/3/library/os.html#os.open"><code>os.open()</code></a>
+    is now used to create new files immediately with correct permissions
+    in a single call to avoid race-conditions
+    (see <a href="https://code.stroeder.com/AE-DIR/aehostd/issues/7">issue #7</a>).
+  </li>
+  <li>
+    Only <var>PAM_SUCCESS</var> authentication results are stored in the PAM result cache.
+  </li>
+</ul>
 
 <p id="202203300000" class="pagesubtitle">2022-03-30 - Tagged ansible-ae-dir-server 0.34.0</p>
 <p>Changes since 0.33.4:</p>
