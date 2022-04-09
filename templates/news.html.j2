@@ -5,6 +5,42 @@
 
 {% block content %}
 
+<p id="202204100000" class="pagesubtitle">2022-04-10 - Tagged ansible-ae-dir-server 0.34.1</p>
+<p>Changes since 0.34.0:</p>
+<ul>
+  <li>
+    The new <var>serialize</var> option is now used for unique constraints
+    defined in OpenLDAP configuration
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/29">issue #29</a>).
+  </li>
+  <li>
+    Re-factored invocation of Python interpreter to run in
+    <a href="https://docs.python.org/3/using/cmdline.html#cmdoption-I">isolated mode (-I)</a>
+    and thus also all environment variables <var>PYTHON*</var> were removed
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/31">issue #31</a>).
+  </li>
+  <li>
+    Updates for OATH-LDAP:
+    <ul>
+      <li>
+        Fixed checking IPv6 addresses in <em>bind_proxy</em>
+        (see <a href="https://code.stroeder.com/OATH-LDAP/oath-ldap-srv/issues/8">oath-ldap-srv #8</a>).
+      </li>
+      <li>
+        Always use thread-pooling in OATH-LDAP bind listeners, also for <em>hotp_validator</em>,
+        and added new config parameter <var>threads</var> for defining the number of worker threads used
+        (see <a href="https://code.stroeder.com/OATH-LDAP/oath-ldap-srv/issues/10">oath-ldap-srv #10</a>).
+      </li>
+    </ul>
+  </li>
+  <li>
+    Fixed using MDB tools on openSUSE Leap.
+  </li>
+  <li>
+    Some minor changes to systemd service units and AppArmor profiles.
+  </li>
+</ul>
+
 <p id="202204022000" class="pagesubtitle">2022-04-02 - Released aehostd 1.5.10</p>
 <ul>
   <li>
