@@ -6,9 +6,9 @@
 {% block content %}
 
 <ol>
+  <li><a href="#sso">WebSSO</a></li>
   <li><a href="#monitoring">Monitoring</a></li>
   <li><a href="#ui">User Interface</a></li>
-  <li><a href="#sso">WebSSO</a></li>
   <li><a href="#pki">PKI</a></li>
   <li><a href="#nac">Network Access Control (NAC)</a></li>
   <li><a href="#radius">RADIUS</a></li>
@@ -16,23 +16,15 @@
   <li><a href="#tool">Command-line tool</a></li>
 </ol>
 
-<p><a href="devel.html">How to contribute?</a></p>
-
-<h1 id="monitoring">Monitoring</h1>
-<ul>
-  <li>Implement grafana dash-boards.</li>
-</ul>
-
-<h1 id="ui">User Interface</h1>
+<p class="pagesubtitle">See also:</p>
 <ul>
   <li>
-    specific web application for administrative use-cases
+    <a href="https://code.stroeder.com/AE-DIR?sort=alphabetically">
+      &AElig;-DIR repositories with issue trackers
+    </a>
   </li>
   <li>
-    Simple reporting use-cases (expired objects etc.).
-  </li>
-  <li>
-    Graph reporting of data structures in a zone.
+    <a href="devel.html">How to contribute?</a>
   </li>
 </ul>
 
@@ -56,6 +48,38 @@
     <a href="https://github.com/lepture/Authlib">Authlib</a>,
     see also
     <a href="https://github.com/authlib/example-oidc-server.git">Example of OpenID Connect 1.0 Provider</a>
+  </li>
+</ul>
+
+<h1 id="monitoring">Monitoring</h1>
+<ul>
+  <li>
+    Implement &AElig;-DIR data metrics exporter:
+    <ul>
+      <li>Number of zones, users, groups, hosts etc. labeled by <var>aeStatus</var></li>
+      <li>Inbound references to a zone labeled per referencing zone.</li>
+      <li>Extract data from exported LDIF data.</li>
+    </ul>
+  </li>
+  <li>
+    Implement grafana dash-boards for
+    <ul>
+      <li><a href="https://code.stroeder.com/ldap/slapdcheck/issues/16">slapdcheck</a></li>
+      <li>&AElig;-DIR data metrics exporter</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="ui">User Interface</h1>
+<ul>
+  <li>
+    specific web application for administrative use-cases
+  </li>
+  <li>
+    Simple reporting use-cases (expired objects etc.).
+  </li>
+  <li>
+    Graph reporting of data structures in a zone.
   </li>
 </ul>
 
