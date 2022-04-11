@@ -5,6 +5,31 @@
 
 {% block content %}
 
+<p id="202204110000" class="pagesubtitle">2022-04-11 - Tagged ansible-ae-dir-server 0.34.2</p>
+<p>Changes since 0.34.1:</p>
+<p>
+  Support for using the Authorization Identity Request and Response Control
+  (see <a href="https://datatracker.ietf.org/doc/html/rfc3829">RFC 3829</a>):
+</p>
+  <ul>
+    <li>
+      Added overlay <em>slapo-authzid</em> to Debian/Ubuntu package <em>openldap-ms-contrib-overlays</em>
+      (see <a href="https://code.stroeder.com/AE-DIR/debian-openldap-ms/issues/4">issue #4</a>).
+    </li>
+    <li>
+      Enabled contrib overlay <em>slapo-authzid</em> in <em>slapd.conf</em>
+      on platforms where this overlay is already available (openSUSE/SLE, Debian, Ubuntu)
+      (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/32">issue #32</a>).
+    </li>
+    <li>
+      Install python-aedir 1.4.11+ which now uses the control in case
+      of simple bind operation. This automatically saves one round-trip
+      in <em>aehostd</em> because <em>Who Am I?</em> extended operation
+      is then not needed.
+    </li>
+  </ul>
+</li>
+
 <p id="202204100000" class="pagesubtitle">2022-04-10 - Tagged ansible-ae-dir-server 0.34.1</p>
 <p>Changes since 0.34.0:</p>
 <ul>
