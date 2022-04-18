@@ -32,7 +32,7 @@
     <a href="docs.html#sys-arch">system architecture</a>.
   </li>
   <li>
-    Currently the ansible playbooks support fully automated
+    Currently the Ansible playbooks support fully automated
     installation/configuration on&hellip;
     <ul>
       <li>
@@ -73,10 +73,6 @@
         <a href="https://archlinux.org/">Arch Linux</a>
       </li>
     </ul>
-    If you want to tweak the ansible roles to install on another OS make
-    sure a recent <a href="https://www.openldap.org">OpenLDAP 2.5.7+</a>
-    with overlay <em>slapo-deref</em> is available for your OS platform.
-    Older releases are explicitly not recommended!
   </li>
   <li>
     The ansible roles needs the following software packages on all target
@@ -116,19 +112,41 @@ python3 -m venv /opt/ansible
     Configure time synchronisation (NTP) required for reliable replication.
   </li>
   <li>
+    Firewall rules are properly setup
+    (see also <a href="docs.html#sys-arch">system architecture</a>):
+    <ul>
+      <li>
+        Your Ansible control node (e.g. admin workstation) has to be able to contact
+        all &AElig;-DIR hosts via SSH (usually 22/tcp, see below for details).
+      </li>
+      <li>
+        Your admin workstation has to be able to contact the &AElig;-DIR
+        providers via HTTPS (443/tcp).
+      </li>
+      <li>
+        The provider replicas have to be able to contact each other via
+        <em>LDAPS</em> (port 636/tcp).
+      </li>
+      <li>
+        The consumer replicas have to be able to contact the relevant
+        provider replicas via <em>LDAPS</em> (port 636/tcp).
+      </li>
+    </ul>
+  </li>
+  <li>
     Prepare to have SSH access to all &AElig;-DIR servers as user
     <em>root</em> (via <code>su</code> or <code>sudo</code>)
+  </li>
+  <li>
+    Check whether you can access the hosts via SSH with:
+    <pre class="cli">/opt/ansible/bin/ansible all -i 'hostname.example.com,' -m setup</pre>
+    The trailing comma after the FQDN is needed when using a single hostname!
   </li>
   <li>
     Make yourself familiar with how to use command-line options for
     <a href="https://docs.ansible.com/ansible/latest/user_guide/become.html#become">
       ansible privilege escalation with become
     </a>.
-  </li>
-  <li>
-    Check whether you can access the hosts with:
-    <pre class="cli">/opt/ansible/bin/ansible all -i 'hostname.example.com,' -m setup</pre>
-    The trailing comma after the FQDN is needed when using a single hostname!
   </li>
   <li>
     You have to issue X.509 TLS server certificates with appropriate
@@ -195,7 +213,7 @@ cd myenv
       <li>
         At first run this will generate TLS server key and signed CSR file
         and stops with a message where to find the CSR files on your local
-        ansible controller.
+        Ansible control node (e.g. admin workstation).
       </li>
       <li>
         After signing the CSRs with your CA place the server certificate file(s) into
