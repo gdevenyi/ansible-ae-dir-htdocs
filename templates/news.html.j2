@@ -42,13 +42,13 @@
     On Debian and Ubuntu the APT repo signing public key is now installed
     in directory <code>/etc/apt/trusted.gpg.d/</code> instead of using
     deprecated <code>apt-key</code> tool
-    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/36">issue #36</a>).
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/36">ansible-ae-dir-server#36</a>).
   </li>
   <li>
     The obsolete work-around for
     <a href="https://bugs.openldap.org/show_bug.cgi?id=8444">OpenLDAP ITS#8444</a>
     to configure <em>slapo-syncprov </em> also on the read-only consumers was removed
-    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/30">issue #30</a>).
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/30">ansible-ae-dir-server#30</a>).
   </li>
   <li>
     Added <code>After=ae-slapd.service</code> to service unit <em>slapdcheck.service</em>.
@@ -56,7 +56,7 @@
   <li>
     Added new mtail counter metric <em>slapd_ppolicy_expired</em> for
     counting password expired messages
-    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/26">issue #26</a>).
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/26">ansible-ae-dir-server#26</a>).
   </li>
 </ul>
 
@@ -85,7 +85,7 @@
   <li>
     Enabled contrib overlay <em>slapo-authzid</em> in <em>slapd.conf</em>
     on platforms where this overlay is already available (openSUSE/SLE, Debian, Ubuntu)
-    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/32">issue #32</a>).
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/32">ansible-ae-dir-server#32</a>).
   </li>
   <li>
     Install python-aedir 1.4.11+ which now uses the control in case
@@ -101,13 +101,13 @@
   <li>
     The new <var>serialize</var> option is now used for unique constraints
     defined in OpenLDAP configuration
-    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/29">issue #29</a>).
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/29">ansible-ae-dir-server#29</a>).
   </li>
   <li>
     Re-factored invocation of Python interpreter to run in
     <a href="https://docs.python.org/3/using/cmdline.html#cmdoption-I">isolated mode (-I)</a>
     and thus also all environment variables <var>PYTHON*</var> were removed
-    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/31">issue #31</a>).
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/31">ansible-ae-dir-server#31</a>).
   </li>
   <li>
     Updates for OATH-LDAP:
