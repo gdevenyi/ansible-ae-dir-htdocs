@@ -5,6 +5,25 @@
 
 {% block content %}
 
+<p id="202206190000" class="pagesubtitle">2022-06-19 - Tagged ansible-ae-dir-server 0.34.5</p>
+<p>Changes since 0.34.4:</p>
+<ul>
+  <li>
+    Fixed Python version used by openSUSE Tumbleweed: Now Python 3.10.
+  </li>
+  <li>
+    Update to <em>ae-dir-tool</em> 1.0.8+ which now displays
+    the full DN of the entry found for password change
+    (see <a href="https://code.stroeder.com/AE-DIR/ae-dir-tool/issues/2">ae-dir-tool#2</a>).
+  </li>
+  <li>
+    Instead of installing a global SASL configuration for <em>slapd</em>
+    the environment variable <var>SASL_CONF_PATH</var> is set in
+    <em>ae-slapd.service</em> to reference a custom SASL configuration file
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/37">ansible-ae-dir-server#37</a>).
+  </li>
+</ul>
+
 <p id="202205240000" class="pagesubtitle">2022-05-24 - Tagged ansible-ae-dir-server 0.34.4</p>
 <p>Changes since 0.34.3:</p>
 <ul>
