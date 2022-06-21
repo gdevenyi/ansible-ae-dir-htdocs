@@ -5,6 +5,24 @@
 
 {% block content %}
 
+<p id="202206210000" class="pagesubtitle">2022-06-21 - Tagged ansible-ae-dir-server 0.34.6</p>
+<p>Changes since 0.34.5:</p>
+<p><a href="ekca.html">EKCA</a> fixes/improvements:</p>
+<ul>
+  <li>
+    Update to ekca-service 1.1.0+ which has new config setting <var>PROXY_LEVEL</var>
+    to correctly read the client's IP address from HTTP header <var>X-Forwarded-For</var>
+    (see also <a href="https://code.stroeder.com/EKCA/ekca-service/issues/6">ekca-service#6</a>).
+  </li>
+  <li>
+    Update to ekca-plugin-aedir 0.1.3+ which now raises an exception in case
+    the user entry could not be read
+    (<a href="https://code.stroeder.com/EKCA/ekca-plugin-aedir/issues/1">ekca-plugin-aedir#1</a>)
+    and sends the LDAP Session Tracking Control with the LDAP operations
+    (<a href="https://code.stroeder.com/EKCA/ekca-plugin-aedir/issues/2">ekca-plugin-aedir#2</a>).
+  </li>
+</ul>
+
 <p id="202206190000" class="pagesubtitle">2022-06-19 - Tagged ansible-ae-dir-server 0.34.5</p>
 <p>Changes since 0.34.4:</p>
 <ul>
