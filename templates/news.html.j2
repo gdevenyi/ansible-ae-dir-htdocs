@@ -5,6 +5,21 @@
 
 {% block content %}
 
+<p id="202206290000" class="pagesubtitle">2022-06-29 - Tagged ansible-ae-dir-server 0.34.7</p>
+<p>Changes since 0.34.6:</p>
+<ul>
+  <li>
+    To more strictly follow need-to-know principle the <var>msPwdResetObject</var>
+    attributes are not replicated to the read-only consumers anymore
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/38">ansible-ae-dir-server#38</a>).
+  </li>
+  <li>
+    Added missing config params for service <em>ae-dir-pwd</em> to
+    correctly configure logging and using the remote IP address
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/39">ansible-ae-dir-server#39</a>).
+  </li>
+</ul>
+
 <p id="202206210000" class="pagesubtitle">2022-06-21 - Tagged ansible-ae-dir-server 0.34.6</p>
 <p>Changes since 0.34.5:</p>
 <p><a href="ekca.html">EKCA</a> fixes/improvements:</p>
