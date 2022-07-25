@@ -5,6 +5,53 @@
 
 {% block content %}
 
+<p id="202207250000" class="pagesubtitle">2022-07-25 - Tagged ansible-ae-dir-server 0.34.9</p>
+<p>Changes since 0.34.8:</p>
+<ul>
+  <li>
+    From now on only openSUSE Leap 15.4+ and SLE15SP4 are supported.
+  </li>
+  <li>
+    Added new ansible variable <var>apache_threadsperchild</var> for setting Apache directive
+    <a href="https://httpd.apache.org/docs/2.4/mod/mpm_common.html#threadsperchild">ThreadsPerChild</a>.
+  </li>
+  <li>
+    Added tool script <code>ae-dir-slapd-debug.sh</code> which stops
+    <em>ae-slapd.service</em> and starts a <em>slapd</em> instance
+    writing debug information to console
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/27">ansible-ae-dir-server#27</a>).
+  </li>
+  <li>
+    Added AppArmor profile for <em>slapdcheck.service</em>
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/41">ansible-ae-dir-server#41</a>).
+  </li>
+  <li>
+    Fixed removing all systemd units for <em>slapdcheck</em> if disabled.
+  </li>
+  <li>
+    Changed ownership and permissions of run-time directories for
+    <em>ae-slapd.service</em> and <em>ae-apache.service</em>.
+  </li>
+  <li>
+    The Python virtual env is now automatically re-initialized in case
+    the currently installed Python version does not match expected
+    <var>aedir_python_version</var>.
+  </li>
+  <li>
+    Added new ansible variable <var>aedir_zypper_state</var> for setting
+    <var>state:</var> value of <em>zypper</em> tasks (SLE and openSUSE).
+  </li>
+  <li>
+    Re-factored restart notifications and the names to which handlers listen.
+  </li>
+  <li>
+    Fixed restart notifications for EKCA services.
+  </li>
+  <li>
+    Various other clean-ups/fixes in ansible code.
+  </li>
+</ul>
+
 <p id="202207140000" class="pagesubtitle">2022-07-14 - Tagged ansible-ae-dir-server 0.34.8</p>
 <p>Changes since 0.34.7:</p>
 <ul>
