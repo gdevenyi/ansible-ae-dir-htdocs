@@ -5,6 +5,30 @@
 
 {% block content %}
 
+<p id="202209040000" class="pagesubtitle">2022-09-04 - Released aehostd 1.5.12 and ansible-aehostd 1.5.12.1</p>
+<ul>
+  <li>
+    <em>aehostd 1.5.12+</em> now uses <code>shutil.move()</code> when
+    moving exported sudoers file to also work in case source and target
+    directories are on different file systems
+    (see <a href="https://code.stroeder.com/AE-DIR/aehostd/issues/19">aehostd#19</a>).
+  </li>
+  <li>
+    <em>ansible-aehostd 1.5.12.1</em>
+    <ul>
+      <li>
+        Only restart service <em>aehostd-ph</em> in the notification 
+        handler on systems without systemd.
+      </li>
+      <li>
+        Added more systemd sandboxing options
+        (see <a href="https://code.stroeder.com/AE-DIR/ansible-aehostd/issues/7">ansible-aehostd#7</a>).
+      </li>
+    </ul>
+     
+  </li>
+</ul>
+
 <p id="202207250000" class="pagesubtitle">2022-07-25 - Tagged ansible-ae-dir-server 0.34.9</p>
 <p>Changes since 0.34.8:</p>
 <ul>
