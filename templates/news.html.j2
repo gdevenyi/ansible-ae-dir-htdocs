@@ -14,7 +14,16 @@
     (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/44">ansible-ae-dir-server#44</a>).
   </li>
   <li>
-    Added more systemd sandboxing options.
+    Added more systemd sandboxing options:
+    <ul>
+      <li><code>ProcSubset=pid</code> (all service units)</li>
+      <li><code>SocketBindDeny=any</code> (all service units)</li>
+      <li><code>SocketBindAllow=</code> in (<em>ae-slapd.service</em> and <em>ae-apache.service</em>)</li>
+    </ul>
+  </li>
+  <li>
+    Added new ansible variable <var>openldap_tcp_ports</var> which
+    must match all TCP ports defined in <var>openldap_listen_uris</var>.
   </li>
   <li>
     Added CLI option <code>--upgrade-strategy eager</code> to default value of
