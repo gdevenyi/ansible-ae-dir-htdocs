@@ -5,6 +5,33 @@
 
 {% block content %}
 
+<p id="202211070000" class="pagesubtitle">2022-11-07 - Tagged ansible-ae-dir-server 0.34.10</p>
+<p>Changes since 0.34.9:</p>
+<ul>
+  <li>
+    Added new mtail counter metric <em>slapd_tls_established</em> for
+    counting &quot;TLS negotiation failure&quot; messages
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/44">ansible-ae-dir-server#44</a>).
+  </li>
+  <li>
+    Added more systemd sandboxing options.
+  </li>
+  <li>
+    Added CLI option <code>--upgrade-strategy eager</code> to default value of
+    <em>aedir_pip_install_options</em>.
+  </li>
+  <li>
+    Added <code>ExecStartPre=+/opt/ae-dir/sbin/ae-dir-fix-db-permissions.sh</code>
+    to systemd service unit <em>ae-slapd.service</em> for automatically
+    fixing ownership/permissions of OpenLDAP database files
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/48">ansible-ae-dir-server#48</a>).
+  </li>
+  <li>
+    Env var <em>FLASK_ENV</em> not set in systemd service units for web apps
+    anymore because it is deprecated since Flask 2.2.0.
+  </li>
+</ul>
+
 <p id="202209040000" class="pagesubtitle">2022-09-04 - Released aehostd 1.5.12 and ansible-aehostd 1.5.12.1</p>
 <ul>
   <li>
