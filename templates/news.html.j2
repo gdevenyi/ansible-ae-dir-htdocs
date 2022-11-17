@@ -5,6 +5,24 @@
 
 {% block content %}
 
+<p id="202211170000" class="pagesubtitle">2022-11-17 - Tagged ansible-ae-dir-server 0.35.1</p>
+<p>Changes since 0.35.0:</p>
+<ul>
+  <li>
+    Fixed creating directory for exported backup files in case <var>openldap_backup_path</var>
+    points to a different directory as <var>openldap_data</var>
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/49">ansible-ae-dir-server#49</a>).
+  </li>
+  <li>
+    Fixed <code>ae-dir-fix-db-permissions.sh</code> to not fail on non-existend MDB files
+    (see <a href="https://code.stroeder.com/AE-DIR/ansible-ae-dir-server/issues/50">ansible-ae-dir-server#50</a>).
+  </li>
+  <li>
+    Added new ansible variable <var>openldap_systemd_service_type</var> used
+    to specify value of <code>Type=</code> in <em>ae-slapd.service</em>.
+  </li>
+</ul>
+
 <p id="202211100000" class="pagesubtitle">2022-11-10 - Tagged ansible-ae-dir-server 0.35.0</p>
 <p>Changes since 0.34.10:</p>
 <ul>
